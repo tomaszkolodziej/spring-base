@@ -1,0 +1,28 @@
+spring.jpa:
+    hibernate.ddl-auto: validate
+    show-sql: false
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+spring.datasource:
+    url: jdbc:postgresql://localhost:5432/elabdb
+    username: elab
+    password: s0meDifficUltp@ssw0rd1@3$5
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    driver-class-name: org.postgresql.Driver
+
+server:
+    port: 8090
+    contextPath: /elab/api
+
+servlet.container.maxThreads: 500
+
+security.basic.enabled: false
+
+app:
+    token:
+        header: X-Auth-Token
+        secret: verySecretP@ssw0rd!!
+        expiration: 604800
+    route.authentication.refresh: refresh
+

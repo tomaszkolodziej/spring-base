@@ -1,0 +1,38 @@
+:host {
+  background-color: #3f51b5;
+  border-bottom: solid 1px;
+  border-color: #bdbdbd;
+  display: block;
+  height: 48px;
+  padding: 0 16px;
+}
+
+nav a {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 48px;
+  margin-right: 20px;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 5px;
+  border: solid 3px #3f51b5;
+}
+
+nav a.router-link-active {
+  background-color: white;
+  border: solid 3px #ff4081;
+  border-radius: 0px;
+  color: #212121;
+  text-decoration: none !important;
+}
+
+.logged-as-text {
+  color: white;
+  font-size: x-small;
+}
+
+.profile {
+  color: #ff4081;
+}

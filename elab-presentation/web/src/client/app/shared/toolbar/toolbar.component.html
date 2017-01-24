@@ -1,0 +1,6 @@
+<h1>eApp</h1>
+<div class="logged-as" [hidden]="!isLoggedIn()">
+  <span class="logged-as-text">zalogowany jako</span><br>
+  <strong>{{getUsername()}}</strong>
+</div>
+<div class="logged-as-image" [hidden]="!isLoggedIn()"></div>

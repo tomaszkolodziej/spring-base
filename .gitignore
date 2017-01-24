@@ -1,12 +1,22 @@
+.idea
+*.iml
+**/*.iml
+node_modules
+jspm_packages
+link-checker-results.txt
+**/*npm-debug.log.*
+*.js
+*.js.map
+e2e/**/*.js
+e2e/**/*.js.map
+_test-output
+_temp
 *.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+target/
 *.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+!karma*.js
+!protractor*.js
+!systemjs.config.js
+!wallaby.js
+db-infomedica-migration/target/generated-sources/
+elab-impl/target/generated-sources/

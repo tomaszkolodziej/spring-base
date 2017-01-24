@@ -1,0 +1,10 @@
+footer .author {
+  color: #bdbdbd;
+  font-size: small;
+  float: right;
+}
+
+footer .ladybug {
+  float: right;
+  margin-right: 5px;
+}

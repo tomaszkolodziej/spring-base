@@ -1,0 +1,63 @@
+/* Reset */
+html,
+body,
+div {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Box-sizing border-box */
+* {
+  box-sizing: border-box;
+}
+
+/* Set up a default font and some padding to provide breathing room */
+body {
+  color: #212121;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  padding: 20px;
+}
+
+footer {
+  padding-right: 20px;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline !important;
+}
+
+button.ui.primary.button {
+  background-color: #ff4081;
+}
+
+h2 {
+
+}
+
+h4 {
+  color: #757575;
+  font-weight: normal !important;
+}
+
+input {
+  border-radius: 0 !important;
+  border-bottom: solid 2px black;
+}
+
+.ui {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/*.ui.segment {*/
+  /*border-radius: 0 !important;*/
+  /*box-shadow: none !important;*/
+/*}*/
