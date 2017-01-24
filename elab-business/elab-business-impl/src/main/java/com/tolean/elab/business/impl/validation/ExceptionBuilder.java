@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkState;
  *          .maxLength("imie", 100)
  *          .thrown();
  *
- * Created by Tomasz Kołodziej
+ * Created by tomasz.kolodziej@poczta.pl
  */
 public class ExceptionBuilder {
 
