@@ -21,17 +21,17 @@ import org.springframework.core.io.ClassPathResource;
 @Import({ElabPersistenceConfiguration.class, WebSecurityConfiguration.class})
 public class ElabApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(ElabApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(ElabApplication.class, args);
+    }
 
-  @Bean
-  public PropertySourcesPlaceholderConfigurer properties() {
-    PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer ();
-    YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
-    yamlPropertiesFactoryBean.setResources(new ClassPathResource("application.yml"));
-    propertySourcesPlaceholderConfigurer.setProperties(yamlPropertiesFactoryBean.getObject());
-    return propertySourcesPlaceholderConfigurer;
-  }
+    @Bean
+    public PropertySourcesPlaceholderConfigurer properties() {
+        PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
+        YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
+        yamlPropertiesFactoryBean.setResources(new ClassPathResource("application.yml"));
+        propertySourcesPlaceholderConfigurer.setProperties(yamlPropertiesFactoryBean.getObject());
+        return propertySourcesPlaceholderConfigurer;
+    }
 
 }

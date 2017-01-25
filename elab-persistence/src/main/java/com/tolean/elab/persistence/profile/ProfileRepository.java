@@ -17,20 +17,28 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ProfileRepository {
 
-  private final ProfileBaseRepository profileBaseRepository;
+    private final ProfileBaseRepository profileBaseRepository;
 
-  public Optional<Profile> findOne(Long id) {
-    checkNotNull("20170114:1153", id);
-    return Optional.of(profileBaseRepository.findOne(id));
-  }
+    public Optional<Profile> findOne(Long id) {
+        checkNotNull("20170114:1153", id);
 
-  public Optional<Profile> findByLogin(String login) {
-    checkNotNull("20170114:1156", login);
-    return Optional.of(profileBaseRepository.findByLogin(login));
-  }
+        return Optional.of(profileBaseRepository.findOne(id));
+    }
 
-  public List<Profile> findAll() {
-    return Lists.newArrayList(profileBaseRepository.findAll());
-  }
+    public Optional<Profile> findByLogin(String login) {
+        checkNotNull("20170114:1156", login);
+
+        return Optional.of(profileBaseRepository.findByLogin(login));
+    }
+
+    public List<Profile> findAll() {
+        return Lists.newArrayList(profileBaseRepository.findAll());
+    }
+
+    public Profile save(Profile profile) {
+        checkNotNull("2017012600", profile);
+
+        return profileBaseRepository.save(profile);
+    }
 
 }

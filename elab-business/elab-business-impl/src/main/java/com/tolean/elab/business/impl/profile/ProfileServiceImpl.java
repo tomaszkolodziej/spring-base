@@ -1,6 +1,8 @@
 package com.tolean.elab.business.impl.profile;
 
 import com.tolean.elab.business.api.profile.ProfileService;
+import com.tolean.elab.business.impl.profile.validator.ProfileValidator;
+import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.mapper.profile.ProfileMapper;
 import com.tolean.elab.persistence.profile.Profile;
@@ -27,6 +29,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     private final ProfileRepository profileRepository;
     private final ProfileMapper profileMapper;
+    private final ProfileValidator profileValidator;
 
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         Optional<Profile> profileOptional = profileRepository.findByLogin(login);
@@ -41,26 +44,38 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
     }
 
     public List<ProfileViewDto> getProfiles() {
-      return profileMapper.toProfileViewDtoList(profileRepository.findAll());
+        return profileMapper.toProfileViewDtoList(profileRepository.findAll());
     }
 
-  public ProfileViewDto getProfile(Long id) {
-    checkNotNull("20170114:1158", id);
+    public ProfileViewDto getProfile(Long id) {
+        checkNotNull("20170114:1158", id);
 
-    Profile profile = profileRepository.findOne(id)
-      .orElseThrow(() -> new ProfileNotFoundException("20140114:1215", id));
+        Profile profile = profileRepository.findOne(id)
+                .orElseThrow(() -> new ProfileNotFoundException("20140114:1215", id));
 
-    return profileMapper.toProfileViewDto(profile);
-  }
+        return profileMapper.toProfileViewDto(profile);
+    }
 
-  @Override
-  public ProfileViewDto getProfile(String login) {
-    checkNotNull("20170115:0939", login);
+    @Override
+    public ProfileViewDto getProfile(String login) {
+        checkNotNull("20170115:0939", login);
 
-    Profile profile = profileRepository.findByLogin(login)
-      .orElseThrow(() -> new ProfileNotFoundException("20170115:0940", login));
+        Profile profile = profileRepository.findByLogin(login)
+                .orElseThrow(() -> new ProfileNotFoundException("20170115:0940", login));
 
-    return profileMapper.toProfileViewDto(profile);
-  }
+        return profileMapper.toProfileViewDto(profile);
+    }
+
+    @Override
+    public ProfileViewDto add(ProfileNewDto profileNewDto) {
+        checkNotNull("20170125:0858", profileNewDto);
+
+        Profile profile = profileMapper.toProfile(profileNewDto);
+        profileValidator.check(profile);
+
+        profile = profileRepository.save(profile);
+
+        return profileMapper.toProfileViewDto(profile);
+    }
 
 }
