@@ -4,6 +4,7 @@ import com.tolean.elab.business.api.profile.ProfileService;
 import com.tolean.elab.business.impl.profile.validator.ProfileValidator;
 import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.dto.profile.ProfileNewDto;
+import com.tolean.elab.dto.profile.ProfileUpdateDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.mapper.profile.ProfileMapper;
 import com.tolean.elab.persistence.profile.Profile;
@@ -76,6 +77,23 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
         profile = profileRepository.save(profile);
 
+        return profileMapper.toProfileViewDto(profile);
+    }
+
+    @Override
+    public ProfileViewDto update(ProfileUpdateDto profileUpdateDto) {
+        checkNotNull("20170126:1856", profileUpdateDto);
+
+        Profile profile = profileRepository.findOne(profileUpdateDto.getId())
+                .orElseThrow(() -> new ProfileNotFoundException("20170126:1857", profileUpdateDto.getId()));
+        profile.setName(profileUpdateDto.getName());
+        profile.setFirstName(profileUpdateDto.getFirstName());
+        profile.setLastName(profileUpdateDto.getLastName());
+        profile.setEmail(profileUpdateDto.getEmail());
+
+        profileValidator.check(profile);
+
+        profile = profileRepository.save(profile);
         return profileMapper.toProfileViewDto(profile);
     }
 
