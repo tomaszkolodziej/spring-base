@@ -1,6 +1,7 @@
 package com.tolean.elab.presentation.rest;
 
 import com.tolean.elab.business.api.profile.ProfileService;
+import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,11 @@ public class ProfileRestController {
     @RequestMapping(method = RequestMethod.POST)
     public ProfileViewDto add(@RequestBody ProfileNewDto profileNewDto) {
         return profileService.add(profileNewDto);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public void changePassword(@RequestBody PasswordNewDto passwordNewDto) {
+
     }
 
 }

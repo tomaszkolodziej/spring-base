@@ -2,11 +2,11 @@ package com.tolean.elab.business.impl.profile
 
 import com.tolean.elab.business.api.profile.ProfileService
 import com.tolean.elab.business.impl.profile.validator.ProfileValidator
+import com.tolean.elab.dto.profile.PasswordNewDto
 import com.tolean.elab.mapper.profile.ProfileMapper
 import com.tolean.elab.persistence.profile.Profile
 import com.tolean.elab.persistence.profile.ProfileRepository
 import spock.lang.Specification
-
 /**
  * Created by tomasz.kolodziej@poczta.pl
  */
@@ -67,6 +67,22 @@ class ProfileServiceImplTest extends Specification {
             profileService.getProfile("login exist")
         then:
             1 * profileMapperMock.toProfileViewDto(_)
+    }
+
+    def "should properly change password"() {
+        given:
+            Profile profile = Profile.builder().id(1L).build()
+
+            profileRepositoryMock.findOne(profile.id) >> Optional.of(profile)
+
+            PasswordNewDto passwordNewDto = new PasswordNewDto()
+            passwordNewDto.oldPassword = "old pass"
+            passwordNewDto.newPassword = "new pass"
+            passwordNewDto.repeatedNewPassword = passwordNewDto.newPassword
+        when:
+            profileService.changePassword(profile.id, passwordNewDto)
+        then:
+            1 * profileRepositoryMock.save(profile)
     }
 
 }

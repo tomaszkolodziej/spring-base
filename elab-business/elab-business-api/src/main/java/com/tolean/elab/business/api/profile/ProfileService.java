@@ -1,5 +1,6 @@
 package com.tolean.elab.business.api.profile;
 
+import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
 
@@ -17,5 +18,7 @@ public interface ProfileService {
     ProfileViewDto getProfile(String login);
 
     ProfileViewDto add(ProfileNewDto profileNewDto);
+
+    void changePassword(Long profileId, PasswordNewDto passwordNewDto);
 
 }
