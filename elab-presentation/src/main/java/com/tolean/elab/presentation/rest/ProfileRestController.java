@@ -40,9 +40,9 @@ public class ProfileRestController {
         return profileService.add(profileNewDto);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public void changePassword(@RequestBody PasswordNewDto passwordNewDto) {
-
+    @RequestMapping(value = "/{profileId}", method = RequestMethod.PUT)
+    public void changePassword(@PathVariable Long profileId, @RequestBody PasswordNewDto passwordNewDto) {
+        profileService.changePassword(profileId, passwordNewDto);
     }
 
 }
