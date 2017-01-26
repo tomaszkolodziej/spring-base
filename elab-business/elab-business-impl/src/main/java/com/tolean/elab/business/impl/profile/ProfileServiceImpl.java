@@ -2,6 +2,7 @@ package com.tolean.elab.business.impl.profile;
 
 import com.tolean.elab.business.api.profile.ProfileService;
 import com.tolean.elab.business.impl.profile.validator.ProfileValidator;
+import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.mapper.profile.ProfileMapper;
@@ -76,6 +77,21 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
         profile = profileRepository.save(profile);
 
         return profileMapper.toProfileViewDto(profile);
+    }
+
+    @Override
+    public void changePassword(Long profileId, PasswordNewDto passwordNewDto) {
+        checkNotNull("20170126:1838", profileId);
+        checkNotNull("20170126:1833", passwordNewDto);
+
+        profileValidator.checkPassword(passwordNewDto);
+
+        Profile profile = profileRepository.findOne(profileId).orElseThrow(() -> new ProfileNotFoundException("20170126:1839", profileId));
+        // TODO szyfrowanie hasla
+        String encodedPassword = passwordNewDto.getNewPassword();
+        profile.setPassword(encodedPassword);
+
+        profileRepository.save(profile);
     }
 
 }

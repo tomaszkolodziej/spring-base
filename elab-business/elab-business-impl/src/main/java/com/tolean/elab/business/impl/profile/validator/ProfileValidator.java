@@ -1,6 +1,7 @@
 package com.tolean.elab.business.impl.profile.validator;
 
 import com.tolean.elab.business.impl.validation.ValidationError;
+import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.persistence.profile.Profile;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,20 @@ public class ProfileValidator {
         }
 
         validationError.throwExceptionIfHasErrorsOnFields();
+    }
+
+    public void checkPassword(PasswordNewDto passwordNewDto) {
+        checkNotNull("20170126:1835", passwordNewDto);
+
+        ValidationError validationError = ValidationError.builder().id("20170126:1836");
+
+        if (isBlank(passwordNewDto.getOldPassword())) {
+            validationError.message("Nie podano starego hasła.").throwException();
+        }
+
+        if (!passwordNewDto.getOldPassword().equals(passwordNewDto.getRepeatedNewPassword())) {
+            validationError.message("Wpisano niepoprawnie nowe hasło.").throwException();
+        }
     }
 
     private void validateLogin(String login, ValidationError validationError) {
