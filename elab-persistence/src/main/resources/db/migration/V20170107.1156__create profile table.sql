@@ -1,5 +1,7 @@
+create sequence profile_id_seq;
+
 create table profile (
-  id bigserial primary key,
+  id bigint primary key,
   create_date timestamp,
   create_by int,
   update_date timestamp,
@@ -13,5 +15,5 @@ create table profile (
   active boolean
 );
 
-insert into profile(create_date, create_by, login, password, name, email, active)
-values(now(), 1, 'serwis', 'serwis', 'serwis', 'tomasz.kolodziej@poczta.pl', true);
+insert into profile(id, create_date, create_by, login, password, name, email, active)
+values(1, now(), 1, 'serwis', 'serwis', 'serwis', 'tomasz.kolodziej@poczta.pl', true);
