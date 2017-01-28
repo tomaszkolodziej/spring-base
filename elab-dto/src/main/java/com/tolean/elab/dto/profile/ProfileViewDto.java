@@ -1,6 +1,9 @@
 package com.tolean.elab.dto.profile;
 
+import com.tolean.elab.dto.profile.setting.SettingViewDto;
 import lombok.Data;
+
+import java.util.Set;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl
@@ -15,5 +18,6 @@ public class ProfileViewDto {
     private String lastName;
     private String email;
     private boolean active;
+    private Set<SettingViewDto> settings;
 
 }

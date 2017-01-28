@@ -2,6 +2,7 @@ package com.tolean.elab.mapper.profile;
 
 import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
+import com.tolean.elab.mapper.profile.setting.SettingMapper;
 import com.tolean.elab.persistence.profile.Profile;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,9 +10,9 @@ import org.mapstruct.Mapping;
 import java.util.List;
 
 /**
- * Created by tomasz.kolodziej@poczta.pl
+ * Created by Tomasz Kołodziej
  */
-@Mapper
+@Mapper(uses = SettingMapper.class)
 public interface ProfileMapper {
 
     ProfileViewDto toProfileViewDto(Profile profile);
@@ -25,6 +26,7 @@ public interface ProfileMapper {
     @Mapping(target = "updateBy", ignore = true)
     @Mapping(target = "password", ignore = true)
     @Mapping(target = "active", ignore = true)
+    @Mapping(target = "settings", ignore = true)
     Profile toProfile(ProfileNewDto profileNewDto);
 
 }
