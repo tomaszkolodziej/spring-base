@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -25,9 +25,9 @@ public class Profile {
     @SequenceGenerator(name = "profile_gen", sequenceName = "profile_id_seq")
     private Long id;
 
-    private Date createDate;
+    private LocalDateTime createDate;
     private Integer createBy;
-    private Date updateDate;
+    private LocalDateTime updateDate;
     private Integer updateBy;
     private String login;
     private String password;

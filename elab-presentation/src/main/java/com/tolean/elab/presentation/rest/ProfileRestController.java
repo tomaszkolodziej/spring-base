@@ -26,19 +26,14 @@ public class ProfileRestController {
         return profileService.getProfiles();
     }
 
-    @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ProfileViewDto getProfile(@PathVariable Long profileId) {
-        return profileService.getProfile(profileId);
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ProfileViewDto getProfile(@RequestParam String login) {
-        return profileService.getProfile(login);
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public ProfileViewDto add(@RequestBody ProfileNewDto profileNewDto) {
         return profileService.add(profileNewDto);
+    }
+
+    @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
+    public ProfileViewDto getProfile(@PathVariable Long profileId) {
+        return profileService.getProfile(profileId);
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PUT)
@@ -49,6 +44,11 @@ public class ProfileRestController {
     @RequestMapping(value = "/{profileId}/changePassword", method = RequestMethod.PUT)
     public void changePassword(@PathVariable Long profileId, @RequestBody PasswordNewDto passwordNewDto) {
         profileService.changePassword(profileId, passwordNewDto);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ProfileViewDto getProfile(@RequestParam String login) {
+        return profileService.getProfile(login);
     }
 
 }
