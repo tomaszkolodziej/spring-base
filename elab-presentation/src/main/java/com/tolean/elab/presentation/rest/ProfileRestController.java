@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by Tomasz Kołodziej
@@ -22,7 +22,7 @@ public class ProfileRestController {
     private final ProfileService profileService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ProfileViewDto> getProfiles() {
+    public Collection<ProfileViewDto> getProfiles() {
         return profileService.getProfiles();
     }
 

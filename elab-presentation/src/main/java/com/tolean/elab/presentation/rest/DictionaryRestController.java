@@ -19,13 +19,13 @@ import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DictionaryRestController {
 
-  private final DictionaryService dictionaryService;
+    private final DictionaryService dictionaryService;
 
-  @RequestMapping(method = RequestMethod.GET)
-  public DictionaryViewDto getDictionary(@RequestParam String code) {
-    checkNotNull("20170131:1536", code);
+    @RequestMapping(method = RequestMethod.GET)
+    public DictionaryViewDto getDictionary(@RequestParam String code) {
+        checkNotNull("20170131:1536", code);
 
-    return dictionaryService.getDictionaries(code);
-  }
+        return dictionaryService.getDictionaries(code);
+    }
 
 }
