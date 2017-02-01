@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
 /**
@@ -15,10 +17,10 @@ public class DictionaryRepository {
 
   private final DictionaryBaseRepository dictionaryBaseRepository;
 
-  public Dictionary getDictionary(String code) {
+  public Optional<Dictionary> findByCode(String code) {
     checkNotNull("20170131:1520", code);
 
-    return dictionaryBaseRepository.findByCode(code);
+    return Optional.of(dictionaryBaseRepository.findByCode(code));
   }
 
 }
