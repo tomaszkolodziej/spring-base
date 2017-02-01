@@ -8,6 +8,7 @@ import com.tolean.elab.persistence.dictionary.DictionaryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
 
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
@@ -25,7 +26,8 @@ public class DictionaryServiceImpl implements DictionaryService {
   public DictionaryViewDto getDictionaries(String code) {
     checkNotNull("20170131:1529", code);
 
-    Dictionary dictionary = dictionaryRepository.getDictionary(code);
+    Dictionary dictionary = dictionaryRepository.findByCode(code)
+      .orElseThrow(() -> new EidIllegalStateException("20170201:151458", "Słownik o kodzie " + code + " nie istnieje"));
 
     return dictionaryMapper.toDictionaryViewDto(dictionary);
   }
