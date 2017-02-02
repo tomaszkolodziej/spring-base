@@ -25,9 +25,7 @@ public class DictionaryServiceImpl implements DictionaryService {
     public DictionaryViewDto getDictionaries(String code) {
         checkNotNull("20170131:1529", code);
 
-        Dictionary dictionary = dictionaryRepository.findByCode(code)
-                .orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", code));
-
+        Dictionary dictionary = dictionaryRepository.findByCode(code).orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", code));
         return dictionaryMapper.toDictionaryViewDto(dictionary);
     }
 

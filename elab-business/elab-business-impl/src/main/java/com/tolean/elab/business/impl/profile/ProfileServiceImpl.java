@@ -1,7 +1,8 @@
 package com.tolean.elab.business.impl.profile;
 
 import com.tolean.elab.business.api.profile.ProfileService;
-import com.tolean.elab.business.impl.profile.validator.ProfileValidator;
+import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction;
+import com.tolean.elab.business.impl.profile.action.ProfileUpdateAction;
 import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileUpdateDto;
@@ -30,6 +31,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     private final ProfileRepository profileRepository;
+    private final ProfileUpdateAction profileUpdateAction;
+    private final ProfileChangePasswordAction profileChangePasswordAction;
     private final ProfileMapper profileMapper;
     private final ProfileValidator profileValidator;
 
@@ -52,9 +55,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
     public ProfileViewDto getProfile(Long id) {
         checkNotNull("20170114:1158", id);
 
-        Profile profile = profileRepository.findOne(id)
-                .orElseThrow(() -> new ProfileNotFoundException("20140114:1215", id));
-
+        Profile profile = profileRepository.findOne(id).orElseThrow(() -> new ProfileNotFoundException("20140114:1215", id));
         return profileMapper.toProfileViewDto(profile);
     }
 
@@ -62,9 +63,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
     public ProfileViewDto getProfile(String login) {
         checkNotNull("20170115:0939", login);
 
-        Profile profile = profileRepository.findByLogin(login)
-                .orElseThrow(() -> new ProfileNotFoundException("20170115:0940", login));
-
+        Profile profile = profileRepository.findByLogin(login).orElseThrow(() -> new ProfileNotFoundException("20170115:0940", login));
         return profileMapper.toProfileViewDto(profile);
     }
 
@@ -76,20 +75,15 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
         profileValidator.check(profile);
 
         profile = profileRepository.save(profile);
-
         return profileMapper.toProfileViewDto(profile);
     }
 
     @Override
-    public ProfileViewDto update(ProfileUpdateDto profileUpdateDto) {
+    public ProfileViewDto update(Long profileId, ProfileUpdateDto profileUpdateDto) {
         checkNotNull("20170126:1856", profileUpdateDto);
 
-        Profile profile = profileRepository.findOne(profileUpdateDto.getId())
-                .orElseThrow(() -> new ProfileNotFoundException("20170126:1857", profileUpdateDto.getId()));
-        profile.setName(profileUpdateDto.getName());
-        profile.setFirstName(profileUpdateDto.getFirstName());
-        profile.setLastName(profileUpdateDto.getLastName());
-        profile.setEmail(profileUpdateDto.getEmail());
+        Profile profile = profileRepository.findOne(profileId).orElseThrow(() -> new ProfileNotFoundException("20170126:1857", profileId));
+        profile = profileUpdateAction.update(profile, profileUpdateDto);
 
         profileValidator.check(profile);
 
@@ -102,12 +96,8 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
         checkNotNull("20170126:1838", profileId);
         checkNotNull("20170126:1833", passwordNewDto);
 
-        profileValidator.checkPassword(passwordNewDto);
-
         Profile profile = profileRepository.findOne(profileId).orElseThrow(() -> new ProfileNotFoundException("20170126:1839", profileId));
-        // TODO szyfrowanie hasla
-        String encodedPassword = passwordNewDto.getNewPassword();
-        profile.setPassword(encodedPassword);
+        profile = profileChangePasswordAction.change(profile, passwordNewDto);
 
         profileRepository.save(profile);
     }
