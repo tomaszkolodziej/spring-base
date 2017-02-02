@@ -16,8 +16,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ProfileUpdateAction {
 
     public Profile update(Profile profile, ProfileUpdateDto profileUpdateDto) {
-        checkNotNull("20170202:1849", profile);
-        checkNotNull("20170202:1850", profileUpdateDto);
+        checkNotNull("20170202:184901", profile);
+        checkNotNull("20170202:185002", profileUpdateDto);
 
         profile.setName(profileUpdateDto.getName());
         profile.setFirstName(profileUpdateDto.getFirstName());
