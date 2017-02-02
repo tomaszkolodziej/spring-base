@@ -37,8 +37,8 @@ public class ProfileRestController {
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PUT)
-    public ProfileViewDto update(@RequestBody ProfileUpdateDto profileUpdateDto) {
-        return profileService.update(profileUpdateDto);
+    public ProfileViewDto update(@PathVariable Long profileId, @RequestBody ProfileUpdateDto profileUpdateDto) {
+        return profileService.update(profileId, profileUpdateDto);
     }
 
     @RequestMapping(value = "/{profileId}/changePassword", method = RequestMethod.PUT)

@@ -1,4 +1,4 @@
-package com.tolean.elab.business.impl.profile.validator;
+package com.tolean.elab.business.impl.profile;
 
 import com.tolean.elab.business.impl.validation.ValidationError;
 import com.tolean.elab.dto.profile.PasswordNewDto;
