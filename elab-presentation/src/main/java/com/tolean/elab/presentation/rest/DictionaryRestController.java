@@ -27,6 +27,7 @@ public class DictionaryRestController {
 
   @RequestMapping(value = "/{dictionaryId}", method = RequestMethod.GET)
   public DictionaryViewDto getDictionary(@PathVariable Long dictionaryId) {
+
     return dictionaryService.getDictionary(dictionaryId);
   }
 
