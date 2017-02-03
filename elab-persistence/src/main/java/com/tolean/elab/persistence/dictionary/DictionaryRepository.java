@@ -20,13 +20,13 @@ public class DictionaryRepository {
   public Optional<Dictionary>  findOne(Long id){
     checkNotNull("20170131:1521", id);
 
-    return Optional.of(dictionaryBaseRepository.findOne(id));
+    return Optional.ofNullable(dictionaryBaseRepository.findOne(id));
   }
 
   public Optional<Dictionary> findByCode(String code) {
     checkNotNull("20170131:1520", code);
 
-    return Optional.of(dictionaryBaseRepository.findByCode(code));
+    return Optional.ofNullable(dictionaryBaseRepository.findOneByCode(code));
   }
 
 }
