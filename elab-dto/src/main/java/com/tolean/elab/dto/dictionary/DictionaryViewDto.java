@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class DictionaryViewDto {
 
+  private Long id;
   private String code;
   private String name;
   private boolean active;

@@ -32,8 +32,7 @@ public class ProfileRestController {
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ProfileViewDto getProfile(@PathVariable Long profileId) {
-        return profileService.getProfile(profileId);
+    public ProfileViewDto getProfile(@PathVariable Long profileId) { return profileService.getProfile(profileId);
     }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PUT)
