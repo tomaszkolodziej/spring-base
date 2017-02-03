@@ -7,8 +7,8 @@ import com.tolean.elab.dto.dictionary.DictionaryViewDto;
  */
 public interface DictionaryService {
 
-  DictionaryViewDto getDictionaries(String code);
+  DictionaryViewDto getDictionary(String code);
 
-  DictionaryViewDto getDictionaries(Long id);
+  DictionaryViewDto getDictionary(Long id);
 
 }

@@ -23,7 +23,7 @@ public class DictionaryServiceImpl implements DictionaryService {
   private final DictionaryMapper dictionaryMapper;
 
 
-  public DictionaryViewDto getDictionaries(Long id) {
+  public DictionaryViewDto getDictionary(Long id) {
     checkNotNull("20170214:1158", id);
 
     Dictionary dictionary = dictionaryRepository.findOne(id)
@@ -34,7 +34,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 
 
   @Override
-  public DictionaryViewDto getDictionaries(String code) {
+  public DictionaryViewDto getDictionary(String code) {
     checkNotNull("20170131:1529", code);
 
 

@@ -22,12 +22,12 @@ public class DictionaryRestController {
   public DictionaryViewDto getDictionary(@RequestParam String code) {
     checkNotNull("20170131:1536", code);
 
-    return dictionaryService.getDictionaries(code);
+    return dictionaryService.getDictionary(code);
   }
 
   @RequestMapping(value = "/{dictionaryId}", method = RequestMethod.GET)
   public DictionaryViewDto getDictionary(@PathVariable Long dictionaryId) {
-    return dictionaryService.getDictionaries(dictionaryId);
+    return dictionaryService.getDictionary(dictionaryId);
   }
 
 }
