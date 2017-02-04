@@ -31,6 +31,11 @@
       <artifactId>mapstruct-jdk8</artifactId>
       <version>${org.mapstruct.version}</version>
     </dependency>
+    <!-- test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
