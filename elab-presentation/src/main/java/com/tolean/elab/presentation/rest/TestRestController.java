@@ -15,6 +15,11 @@ import pl.wavesoftware.eid.exceptions.EidRuntimeException;
 @RequestMapping("/test")
 public class TestRestController {
 
+    @RequestMapping(value = "/testReturnString", method = RequestMethod.GET)
+    public String testReturnString() {
+        return "hello world";
+    }
+
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ProfileViewDto test() {
         log.info("test method called");

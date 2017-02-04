@@ -74,10 +74,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/auth").anonymous()
-                .antMatchers("/test/**").permitAll()
-                .antMatchers("/profile/**").permitAll()
-                .antMatchers("/dictionary/**").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/test/**").anonymous()
+                .anyRequest().anonymous();
+//                .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
