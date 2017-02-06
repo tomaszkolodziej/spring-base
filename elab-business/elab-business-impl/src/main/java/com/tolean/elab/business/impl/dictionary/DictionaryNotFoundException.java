@@ -11,4 +11,9 @@ public class DictionaryNotFoundException extends EidIllegalStateException {
         super(eid, "Słownik o kodzie " + code + " nie został odnaleziony.");
     }
 
+    public DictionaryNotFoundException(String eid, Long dictionaryId) {
+      super(eid, "Słownik o kodzie " + dictionaryId + " nie został odnaleziony.");
+    }
+
+
 }

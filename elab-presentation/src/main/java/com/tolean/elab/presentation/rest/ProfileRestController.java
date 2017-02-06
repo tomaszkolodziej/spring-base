@@ -27,14 +27,10 @@ public class ProfileRestController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ProfileViewDto add(@RequestBody ProfileNewDto profileNewDto) {
-        return profileService.add(profileNewDto);
-    }
+    public ProfileViewDto add(@RequestBody ProfileNewDto profileNewDto) { return profileService.add(profileNewDto); }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ProfileViewDto getProfile(@PathVariable Long profileId) {
-        return profileService.getProfile(profileId);
-    }
+    public ProfileViewDto getProfile(@PathVariable Long profileId) { return profileService.getProfile(profileId); }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PUT)
     public ProfileViewDto update(@RequestBody ProfileUpdateDto profileUpdateDto) {
