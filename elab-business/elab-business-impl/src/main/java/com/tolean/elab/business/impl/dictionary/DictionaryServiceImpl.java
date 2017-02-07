@@ -27,16 +27,6 @@ public class DictionaryServiceImpl implements DictionaryService {
   private final DictionaryValidator dictionaryValidator;
 
 
-  public DictionaryViewDto getDictionary(Long id) {
-    checkNotNull("20170214:1158", id);
-
-    Dictionary dictionary = dictionaryRepository.findOne(id)
-      .orElseThrow(() -> new EidIllegalStateException("20170114:1215", "Słownik o id " + id + " nie istnieje"));
-
-    return dictionaryMapper.toDictionaryViewDto(dictionary);
-  }
-
-  @Override
   public DictionaryViewDto getDictionary(String code) {
     checkNotNull("20170131:1529", code);
 
@@ -54,7 +44,6 @@ public class DictionaryServiceImpl implements DictionaryService {
     dictionaryValidator.check(dictionary);
 
     dictionary = dictionaryRepository.save(dictionary);
-
     return dictionaryMapper.toDictionaryViewDto(dictionary);
   }
 
@@ -64,8 +53,6 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     Dictionary dictionary = dictionaryRepository.findOne(dictionaryUpdateDto.getId())
       .orElseThrow(() -> new DictionaryNotFoundException("20170126:1857", dictionaryUpdateDto.getId()));
-    dictionary.setCode(dictionaryUpdateDto.getCode());
-    dictionary.setDescription(dictionaryUpdateDto.getName());
     dictionary.setDescription(dictionaryUpdateDto.getDescription());
     dictionary.setActive(dictionaryUpdateDto.isActive());
     dictionaryValidator.check(dictionary);

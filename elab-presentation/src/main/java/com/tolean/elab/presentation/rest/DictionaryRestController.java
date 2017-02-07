@@ -26,11 +26,6 @@ public class DictionaryRestController {
     return dictionaryService.getDictionary(code);
   }
 
-  @RequestMapping(value = "/{dictionaryId}", method = RequestMethod.GET)
-  public DictionaryViewDto getDictionary(@PathVariable Long dictionaryId) {
-    return dictionaryService.getDictionary(dictionaryId);
-  }
-
   @RequestMapping(method = RequestMethod.POST)
   public DictionaryViewDto add(@RequestBody DictionaryNewDto dictionaryNewDto) {
     return dictionaryService.add(dictionaryNewDto); }

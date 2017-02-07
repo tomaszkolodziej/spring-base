@@ -9,8 +9,6 @@ import lombok.Data;
 public class DictionaryUpdateDto {
 
   private Long id;
-  private String code;
-  private String name;
   private String description;
   private boolean active;
 

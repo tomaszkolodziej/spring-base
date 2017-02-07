@@ -11,8 +11,6 @@ public interface DictionaryService {
 
   DictionaryViewDto getDictionary(String code);
 
-  DictionaryViewDto getDictionary(Long id);
-
   DictionaryViewDto add(DictionaryNewDto dictionaryNewDto);
 
   DictionaryViewDto update(DictionaryUpdateDto dictionaryUpdateDto);
