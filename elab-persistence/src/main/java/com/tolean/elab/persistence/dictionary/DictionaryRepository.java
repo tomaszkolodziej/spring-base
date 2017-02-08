@@ -18,12 +18,13 @@ public class DictionaryRepository {
   private final DictionaryBaseRepository dictionaryBaseRepository;
 
   public Optional<Dictionary> findByCode(String code) {
-    checkNotNull("20170131:1520", code);
+    checkNotNull(code,"20170131:1520");
 
     return Optional.ofNullable(dictionaryBaseRepository.findOneByCode(code));
   }
 
   public Dictionary save(Dictionary dictionary){
+    checkNotNull(dictionary,"20170131:1520");
 
     return dictionaryBaseRepository.save(dictionary);
   }

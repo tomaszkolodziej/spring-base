@@ -8,9 +8,6 @@ import lombok.Data;
 @Data
 public class DictionaryItemNewDto {
 
-  private String code;
   private String name;
-  private String description;
-  private boolean active;
 
 }

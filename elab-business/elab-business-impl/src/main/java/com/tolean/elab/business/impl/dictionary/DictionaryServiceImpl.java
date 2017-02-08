@@ -36,10 +36,11 @@ public class DictionaryServiceImpl implements DictionaryService {
   }
 
   @Override
-  public DictionaryViewDto addDictionaryItem(DictionaryItemNewDto dictionaryItemNewDto){
+  public DictionaryViewDto addDictionaryItem(String dictionaryCode, DictionaryItemNewDto dictionaryItemNewDto){
     checkNotNull(dictionaryItemNewDto, "20170206:1629");
 
-    Dictionary dictionary = dictionaryMapper.toDictionary(dictionaryItemNewDto);
+    Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
+      .orElseThrow(() -> new EidIllegalStateException("20170201:151458", "Słownik o kodzie " + dictionaryCode + " nie istnieje"));
     dictionaryValidator.check(dictionary);
 
     dictionary = dictionaryRepository.save(dictionary);
