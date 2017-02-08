@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by admin on 06.02.2017.
  */
 @Data
-public class DictionaryNewDto {
+public class DictionaryItemNewDto {
 
   private String code;
   private String name;

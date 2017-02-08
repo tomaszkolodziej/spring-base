@@ -1,6 +1,6 @@
 package com.tolean.elab.mapper.dictionary;
 
-import com.tolean.elab.dto.dictionary.DictionaryNewDto;
+import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import com.tolean.elab.persistence.dictionary.Dictionary;
 import org.mapstruct.Mapper;
@@ -17,6 +17,6 @@ public interface DictionaryMapper {
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "description", ignore = true)
   @Mapping(target = "dictionaryItems", ignore = true)
-  Dictionary toDictionary(DictionaryNewDto dictionaryNewDto);
+  Dictionary toDictionary(DictionaryItemNewDto dictionaryItemNewDto);
 
 }

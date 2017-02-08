@@ -2,7 +2,7 @@ package com.tolean.elab.business.impl.dictionary;
 
 import com.tolean.elab.business.api.dictionary.DictionaryService;
 import com.tolean.elab.business.impl.dictionary.validator.DictionaryValidator;
-import com.tolean.elab.dto.dictionary.DictionaryNewDto;
+import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import com.tolean.elab.mapper.dictionary.DictionaryMapper;
 import com.tolean.elab.persistence.dictionary.Dictionary;
@@ -36,10 +36,10 @@ public class DictionaryServiceImpl implements DictionaryService {
   }
 
   @Override
-  public DictionaryViewDto add(DictionaryNewDto dictionaryNewDto){
-    checkNotNull(dictionaryNewDto, "20170206:1629");
+  public DictionaryViewDto addDictionaryItem(DictionaryItemNewDto dictionaryItemNewDto){
+    checkNotNull(dictionaryItemNewDto, "20170206:1629");
 
-    Dictionary dictionary = dictionaryMapper.toDictionary(dictionaryNewDto);
+    Dictionary dictionary = dictionaryMapper.toDictionary(dictionaryItemNewDto);
     dictionaryValidator.check(dictionary);
 
     dictionary = dictionaryRepository.save(dictionary);
