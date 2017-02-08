@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 public class ProfileUpdateDto {
 
-    private Long id;
     private String name;
     private String firstName;
     private String lastName;

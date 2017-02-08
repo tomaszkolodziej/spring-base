@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
 /**
  * @author Tomasz Kołodziej <tomasz.kolodziej@coi.gov.pl>
@@ -16,12 +16,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class DictionaryRepository {
 
   private final DictionaryBaseRepository dictionaryBaseRepository;
-
-  public Optional<Dictionary>  findOne(Long id){
-    checkNotNull("20170131:1521", id);
-
-    return Optional.ofNullable(dictionaryBaseRepository.findOne(id));
-  }
 
   public Optional<Dictionary> findByCode(String code) {
     checkNotNull("20170131:1520", code);

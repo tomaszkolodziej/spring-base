@@ -20,7 +20,7 @@ public interface ProfileService {
 
     ProfileViewDto add(ProfileNewDto profileNewDto);
 
-    ProfileViewDto update(ProfileUpdateDto profileUpdateDto);
+    ProfileViewDto update(Long profileId, ProfileUpdateDto profileUpdateDto);
 
     void changePassword(Long profileId, PasswordNewDto passwordNewDto);
 

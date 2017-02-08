@@ -1,27 +1,34 @@
 package com.tolean.elab.business.impl.profile
 
 import com.tolean.elab.business.api.profile.ProfileService
-import com.tolean.elab.business.impl.profile.validator.ProfileValidator
+import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction
+import com.tolean.elab.business.impl.profile.action.ProfileUpdateAction
 import com.tolean.elab.dto.profile.PasswordNewDto
 import com.tolean.elab.mapper.profile.ProfileMapper
 import com.tolean.elab.persistence.profile.Profile
 import com.tolean.elab.persistence.profile.ProfileRepository
 import spock.lang.Specification
+
 /**
  * Created by tomasz.kolodziej@poczta.pl
  */
 class ProfileServiceImplTest extends Specification {
 
     ProfileRepository profileRepositoryMock
+    ProfileUpdateAction profileUpdateActionMock
+    ProfileChangePasswordAction profileChangePasswordActionMock
     ProfileMapper profileMapperMock
     ProfileValidator profileValidatorMock
     ProfileService profileService
 
     def setup() {
         profileRepositoryMock = Mock(ProfileRepository)
+        profileUpdateActionMock = Mock(ProfileUpdateAction)
+        profileChangePasswordActionMock = Mock(ProfileChangePasswordAction)
         profileMapperMock = Mock(ProfileMapper)
         profileValidatorMock = Mock(ProfileValidator)
-        profileService = new ProfileServiceImpl(profileRepositoryMock, profileMapperMock, profileValidatorMock)
+        profileService = new ProfileServiceImpl(profileRepositoryMock, profileUpdateActionMock, profileChangePasswordActionMock,
+                profileMapperMock, profileValidatorMock)
     }
 
     def "getProfiles should not throw any exception"() {
@@ -79,10 +86,12 @@ class ProfileServiceImplTest extends Specification {
             passwordNewDto.oldPassword = "old pass"
             passwordNewDto.newPassword = "new pass"
             passwordNewDto.repeatedNewPassword = passwordNewDto.newPassword
+
+            profileChangePasswordActionMock.change(profile, passwordNewDto) >> profile
         when:
             profileService.changePassword(profile.id, passwordNewDto)
         then:
-            1 * profileRepositoryMock.save(profile)
+            1 * profileChangePasswordActionMock.change(profile, passwordNewDto)
     }
 
 }

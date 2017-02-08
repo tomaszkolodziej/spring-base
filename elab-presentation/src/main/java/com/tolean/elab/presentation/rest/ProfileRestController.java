@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by Tomasz Kołodziej
@@ -22,19 +22,23 @@ public class ProfileRestController {
     private final ProfileService profileService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ProfileViewDto> getProfiles() {
+    public Collection<ProfileViewDto> getProfiles() {
         return profileService.getProfiles();
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ProfileViewDto add(@RequestBody ProfileNewDto profileNewDto) { return profileService.add(profileNewDto); }
+    public ProfileViewDto add(@RequestBody ProfileNewDto profileNewDto) {
+        return profileService.add(profileNewDto);
+    }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.GET)
-    public ProfileViewDto getProfile(@PathVariable Long profileId) { return profileService.getProfile(profileId); }
+    public ProfileViewDto getProfile(@PathVariable Long profileId) {
+        return profileService.getProfile(profileId);
+    }
 
     @RequestMapping(value = "/{profileId}", method = RequestMethod.PUT)
-    public ProfileViewDto update(@RequestBody ProfileUpdateDto profileUpdateDto) {
-        return profileService.update(profileUpdateDto);
+    public ProfileViewDto update(@PathVariable Long profileId, @RequestBody ProfileUpdateDto profileUpdateDto) {
+        return profileService.update(profileId, profileUpdateDto);
     }
 
     @RequestMapping(value = "/{profileId}/changePassword", method = RequestMethod.PUT)
