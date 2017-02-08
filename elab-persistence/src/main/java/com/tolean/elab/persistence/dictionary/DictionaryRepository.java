@@ -15,7 +15,7 @@ import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DictionaryRepository {
 
-  private final DictionaryBaseRepository dictionaryBaseRepository;
+    private final DictionaryBaseRepository dictionaryBaseRepository;
 
   public Optional<Dictionary> findByCode(String code) {
     checkNotNull(code,"20170131:1520");
