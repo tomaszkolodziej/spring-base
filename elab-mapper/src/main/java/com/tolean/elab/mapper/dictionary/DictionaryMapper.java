@@ -14,12 +14,12 @@ public interface DictionaryMapper {
 
   DictionaryViewDto toDictionaryViewDto(Dictionary dictionary);
 
-  @Mapping(target = "id", ignore = true)
-  @Mapping(target = "code", ignore = true)
-  @Mapping(target = "description", ignore = true)
-  @Mapping(target = "active", ignore = true)
-  @Mapping(target = "dictionaryItems", ignore = true)
-
-  Dictionary DictionaryItemMapper(DictionaryItemNewDto dictionaryItemNewDto);
+//  @Mapping(target = "id", ignore = true)
+//  @Mapping(target = "code", ignore = true)
+//  @Mapping(target = "description", ignore = true)
+//  @Mapping(target = "active", ignore = true)
+//  @Mapping(target = "dictionaryItems", ignore = true)
+//
+//   Dictionary toDictionary(DictionaryNewDto dictionaryNewDtoewDto);
 
 }
