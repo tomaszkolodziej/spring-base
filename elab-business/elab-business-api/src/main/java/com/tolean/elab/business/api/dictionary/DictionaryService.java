@@ -10,6 +10,6 @@ public interface DictionaryService {
 
   DictionaryViewDto getDictionary(String code);
 
-  DictionaryViewDto addDictionaryItem(String Code, DictionaryItemNewDto dictionaryItemNewDto);
+  DictionaryViewDto addDictionaryItem(String code, DictionaryItemNewDto dictionaryItemNewDto);
 
 }

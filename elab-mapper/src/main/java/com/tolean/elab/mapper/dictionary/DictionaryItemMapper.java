@@ -15,7 +15,7 @@ public interface DictionaryItemMapper {
   DictionaryItemViewDto toDictionaryItemViewDto(DictionaryItem dictionaryItem);
 
   @Mapping(target = "id", ignore = true)
-  @Mapping(target = "active", ignore = true)
+  @Mapping(target = "active", defaultValue = "true")
   DictionaryItem toDictionaryItem(DictionaryItemNewDto dictionaryItemNewDto);
 
 }

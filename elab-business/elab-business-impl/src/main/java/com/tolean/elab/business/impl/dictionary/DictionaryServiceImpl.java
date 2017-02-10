@@ -16,6 +16,7 @@ import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
 import sun.rmi.log.LogInputStream;
 
 import java.util.List;
+
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
 /**
@@ -30,7 +31,6 @@ public class DictionaryServiceImpl implements DictionaryService {
   private final DictionaryItemMapper dictionaryItemMapper;
   private final DictionaryValidator dictionaryValidator;
 
-
   public DictionaryViewDto getDictionary(String code) {
     checkNotNull("20170131:1529", code);
 
@@ -41,22 +41,19 @@ public class DictionaryServiceImpl implements DictionaryService {
   }
 
   @Override
-  public DictionaryViewDto addDictionaryItem(String dictionaryCode, DictionaryItemNewDto dictionaryItemNewDto){
-    checkNotNull(dictionaryItemNewDto, "20170206:1629");
+  public DictionaryViewDto addDictionaryItem(String dictionaryCode, DictionaryItemNewDto dictionaryItemNewDto) {
+    checkNotNull(dictionaryCode, "20170206:162901");
+    checkNotNull(dictionaryItemNewDto, "20170206:162900");
 
     Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
-      .orElseThrow(() -> new EidIllegalStateException("20170201:151458", "Słownik o kodzie " + dictionaryCode + " nie istnieje"));
-     List<DictionaryItem> dictionaryItemNewDtos = dictionary.getDictionaryItems();
-     DictionaryItem dictionaryItem = dictionaryItemNewDtos.get(1);
+      .orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", dictionaryCode));
 
-     Integer itemId = dictionaryItemNewDtos.size()+1;
-     dictionaryItem.setId(itemId.longValue());
-     dictionaryItem.setName(dictionaryItemNewDto.getName());
-     dictionaryItemNewDtos.add(dictionaryItem);
-     dictionary.setDictionaryItems(dictionaryItemNewDtos);
-     dictionaryValidator.check(dictionary);
+    dictionaryValidator.check(dictionaryItemNewDto,dictionary);
 
+    DictionaryItem item = dictionaryItemMapper.toDictionaryItem(dictionaryItemNewDto);
+    dictionary.getDictionaryItems().add(item);
     dictionary = dictionaryRepository.save(dictionary);
+
     return dictionaryMapper.toDictionaryViewDto(dictionary);
   }
 

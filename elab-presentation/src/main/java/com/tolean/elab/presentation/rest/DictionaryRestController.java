@@ -25,8 +25,8 @@ public class DictionaryRestController {
     return dictionaryService.getDictionary(code);
   }
 
-  @RequestMapping(method = RequestMethod.POST)
-  public DictionaryViewDto add(@RequestParam String code, @RequestBody DictionaryItemNewDto dictionaryItemNewDto) {
+  @RequestMapping(value= "/{code}/item", method = RequestMethod.POST)
+  public DictionaryViewDto addDictionaryItem(@PathVariable String code, @RequestBody DictionaryItemNewDto dictionaryItemNewDto) {
     return dictionaryService.addDictionaryItem(code,dictionaryItemNewDto); }
 
 }
