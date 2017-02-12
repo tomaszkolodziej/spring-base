@@ -5,13 +5,11 @@ import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction;
 import com.tolean.elab.business.impl.profile.action.ProfileUpdateAction;
 import com.tolean.elab.business.impl.profile.settings.SettingService;
 import com.tolean.elab.dto.profile.*;
-import com.tolean.elab.dto.profile.settings.SettingViewDto;
 import com.tolean.elab.mapper.profile.ProfileMapper;
 import com.tolean.elab.mapper.profile.settings.SettingMapper;
 import com.tolean.elab.persistence.profile.Profile;
 import com.tolean.elab.persistence.profile.ProfileDetail;
 import com.tolean.elab.persistence.profile.ProfileRepository;
-import com.tolean.elab.persistence.profile.setting.Setting;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -103,23 +101,6 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
         profile = profileChangePasswordAction.change(profile, passwordNewDto);
 
         profileRepository.save(profile);
-    }
-
-    @Override
-    public Set<SettingViewDto> getSettings(Long profileId) {
-        checkNotNull(profileId, "20170212:195700");
-
-        Set<Setting> settings = settingService.getSettings(profileId);
-        return settingMapper.toSettingViewDtos(settings);
-    }
-
-    @Override
-    public SettingViewDto getSetting(Long profileId, String code) {
-        checkNotNull(profileId, "20170212:192800");
-        checkNotNull(code, "20170212:192801");
-
-        Setting setting = settingService.getSetting(profileId, code);
-        return settingMapper.toSettingViewDto(setting);
     }
 
 }

@@ -1,7 +1,6 @@
 package com.tolean.elab.business.api.profile;
 
 import com.tolean.elab.dto.profile.*;
-import com.tolean.elab.dto.profile.settings.SettingViewDto;
 
 import java.util.Set;
 
@@ -21,9 +20,5 @@ public interface ProfileService {
     ProfileViewDto update(Long profileId, ProfileUpdateDto profileUpdateDto);
 
     void changePassword(Long profileId, PasswordNewDto passwordNewDto);
-
-    Set<SettingViewDto> getSettings(Long profileId);
-
-    SettingViewDto getSetting(Long profileId, String code);
 
 }
