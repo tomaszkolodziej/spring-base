@@ -1,6 +1,7 @@
 package com.tolean.elab.persistence.dictionary;
 
 import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,6 @@ public class DictionaryItem {
   private Long id;
 
   private String name;
-  private boolean active;
+  private boolean active = true;
 
 }

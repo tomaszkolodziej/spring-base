@@ -2,6 +2,7 @@ package com.tolean.elab.presentation.rest;
 
 import com.tolean.elab.business.api.dictionary.DictionaryService;
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
+import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class DictionaryRestController {
 
   @RequestMapping(value= "/{code}/item", method = RequestMethod.POST)
   public DictionaryViewDto addDictionaryItem(@PathVariable String code, @RequestBody DictionaryItemNewDto dictionaryItemNewDto) {
-    return dictionaryService.addDictionaryItem(code,dictionaryItemNewDto); }
+    return dictionaryService.addDictionaryItem(code,dictionaryItemNewDto);
+  }
+
+  @RequestMapping(value= "/{code}/item/{itemId}", method = RequestMethod.PUT)
+  public DictionaryViewDto updateDictionaryItem(@PathVariable String code, @PathVariable Long itemId, @RequestBody DictionaryItemUpdateDto dictionaryItemUpdateDto) {
+    return dictionaryService.updateDictionaryItem(code,itemId,dictionaryItemUpdateDto);
+  }
 
 }

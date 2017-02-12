@@ -3,6 +3,7 @@ package com.tolean.elab.business.impl.dictionary;
 import com.tolean.elab.business.api.dictionary.DictionaryService;
 import com.tolean.elab.business.impl.dictionary.validator.DictionaryValidator;
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
+import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import com.tolean.elab.mapper.dictionary.DictionaryItemMapper;
 import com.tolean.elab.mapper.dictionary.DictionaryMapper;
@@ -13,9 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
-import sun.rmi.log.LogInputStream;
-
-import java.util.List;
 
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
@@ -46,12 +44,29 @@ public class DictionaryServiceImpl implements DictionaryService {
     checkNotNull(dictionaryItemNewDto, "20170206:162900");
 
     Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
-      .orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", dictionaryCode));
+      .orElseThrow(() -> new DictionaryNotFoundException("20170206:151458", dictionaryCode));
 
     dictionaryValidator.check(dictionaryItemNewDto,dictionary);
 
     DictionaryItem item = dictionaryItemMapper.toDictionaryItem(dictionaryItemNewDto);
     dictionary.getDictionaryItems().add(item);
+    dictionary = dictionaryRepository.save(dictionary);
+
+    return dictionaryMapper.toDictionaryViewDto(dictionary);
+  }
+
+  @Override
+  public DictionaryViewDto updateDictionaryItem(String dictionaryCode, Long dictionaryItemId, DictionaryItemUpdateDto dictionaryItemUpdateDto) {
+    checkNotNull(dictionaryCode, "20170212:162904");
+    checkNotNull(dictionaryItemId, "20170212:162906");
+    checkNotNull(dictionaryItemUpdateDto, "20170212:162905");
+
+    Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
+      .orElseThrow(() -> new DictionaryNotFoundException("20170212:151459", dictionaryCode));
+
+    DictionaryItem item = dictionary.getDictionaryItems().get(dictionaryItemId.intValue());
+    item.setActive(dictionaryItemUpdateDto.isActive());
+    dictionary.getDictionaryItems().set(dictionaryItemId.intValue(),item);
     dictionary = dictionaryRepository.save(dictionary);
 
     return dictionaryMapper.toDictionaryViewDto(dictionary);

@@ -1,13 +1,8 @@
 package com.tolean.elab.persistence.dictionary;
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -27,7 +22,7 @@ public class Dictionary {
   private String description;
   private boolean active;
 
-  @OneToMany
+  @OneToMany(cascade= CascadeType.ALL)
   @JoinColumn(name = "dictionary_id")
   private List<DictionaryItem> dictionaryItems;
 
