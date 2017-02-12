@@ -23,7 +23,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     @Override
     public DictionaryViewDto getDictionaries(String code) {
-        checkNotNull("20170131:1529", code);
+        checkNotNull("20170131:152900", code);
 
         Dictionary dictionary = dictionaryRepository.findByCode(code).orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", code));
         return dictionaryMapper.toDictionaryViewDto(dictionary);
