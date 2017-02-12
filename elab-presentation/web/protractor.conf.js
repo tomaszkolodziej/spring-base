@@ -32,7 +32,7 @@ const config = {
 
 
   /**
-   * Angular 2 configuration
+   * Angular 2 settings
    *
    * useAllAngular2AppRoots: tells Protractor to wait for any angular2 apps on the page instead of just the one matching
    * `rootEl`
