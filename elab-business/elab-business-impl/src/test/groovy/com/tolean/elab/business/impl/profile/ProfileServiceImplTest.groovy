@@ -3,8 +3,10 @@ package com.tolean.elab.business.impl.profile
 import com.tolean.elab.business.api.profile.ProfileService
 import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction
 import com.tolean.elab.business.impl.profile.action.ProfileUpdateAction
+import com.tolean.elab.business.impl.profile.settings.SettingService
 import com.tolean.elab.dto.profile.PasswordNewDto
 import com.tolean.elab.mapper.profile.ProfileMapper
+import com.tolean.elab.mapper.profile.settings.SettingMapper
 import com.tolean.elab.persistence.profile.Profile
 import com.tolean.elab.persistence.profile.ProfileRepository
 import spock.lang.Specification
@@ -14,28 +16,32 @@ import spock.lang.Specification
  */
 class ProfileServiceImplTest extends Specification {
 
+    SettingService settingServiceMock
     ProfileRepository profileRepositoryMock
     ProfileUpdateAction profileUpdateActionMock
     ProfileChangePasswordAction profileChangePasswordActionMock
     ProfileMapper profileMapperMock
+    SettingMapper settingMapperMock
     ProfileValidator profileValidatorMock
     ProfileService profileService
 
     def setup() {
+        settingServiceMock = Mock(SettingService)
         profileRepositoryMock = Mock(ProfileRepository)
         profileUpdateActionMock = Mock(ProfileUpdateAction)
         profileChangePasswordActionMock = Mock(ProfileChangePasswordAction)
         profileMapperMock = Mock(ProfileMapper)
+        settingMapperMock = Mock(SettingMapper)
         profileValidatorMock = Mock(ProfileValidator)
-        profileService = new ProfileServiceImpl(profileRepositoryMock, profileUpdateActionMock, profileChangePasswordActionMock,
-                profileMapperMock, profileValidatorMock)
+        profileService = new ProfileServiceImpl(settingServiceMock, profileRepositoryMock, profileUpdateActionMock,
+                profileChangePasswordActionMock, profileMapperMock, settingMapperMock, profileValidatorMock)
     }
 
     def "getProfiles should not throw any exception"() {
         when:
             profileService.getProfiles()
         then:
-            1 * profileMapperMock.toProfileViewDtoList(_)
+            1 * profileMapperMock.toProfileLightViewDtos(_)
     }
 
     def "getProfile by id should throw exception if profile with given id not found"() {

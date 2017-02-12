@@ -4,10 +4,7 @@ import com.tolean.elab.business.api.profile.ProfileService;
 import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction;
 import com.tolean.elab.business.impl.profile.action.ProfileUpdateAction;
 import com.tolean.elab.business.impl.profile.settings.SettingService;
-import com.tolean.elab.dto.profile.PasswordNewDto;
-import com.tolean.elab.dto.profile.ProfileNewDto;
-import com.tolean.elab.dto.profile.ProfileUpdateDto;
-import com.tolean.elab.dto.profile.ProfileViewDto;
+import com.tolean.elab.dto.profile.*;
 import com.tolean.elab.dto.profile.settings.SettingViewDto;
 import com.tolean.elab.mapper.profile.ProfileMapper;
 import com.tolean.elab.mapper.profile.settings.SettingMapper;
@@ -22,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -55,8 +51,8 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
         }
     }
 
-    public List<ProfileViewDto> getProfiles() {
-        return profileMapper.toProfileViewDtoList(profileRepository.findAll());
+    public Set<ProfileLightViewDto> getProfiles() {
+        return profileMapper.toProfileLightViewDtos(profileRepository.findAll());
     }
 
     public ProfileViewDto getProfile(Long id) {

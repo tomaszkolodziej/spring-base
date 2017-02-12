@@ -1,12 +1,9 @@
 package com.tolean.elab.dto.profile;
 
-import com.tolean.elab.dto.profile.settings.SettingViewDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl
@@ -15,7 +12,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileViewDto {
+public class ProfileLightViewDto {
 
     private Long id;
     private String login;
@@ -24,6 +21,5 @@ public class ProfileViewDto {
     private String lastName;
     private String email;
     private boolean active;
-    private Set<SettingViewDto> settings;
 
 }

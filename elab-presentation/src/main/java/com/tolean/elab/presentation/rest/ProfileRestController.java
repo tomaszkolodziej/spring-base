@@ -1,11 +1,7 @@
 package com.tolean.elab.presentation.rest;
 
 import com.tolean.elab.business.api.profile.ProfileService;
-import com.tolean.elab.dto.profile.PasswordNewDto;
-import com.tolean.elab.dto.profile.ProfileNewDto;
-import com.tolean.elab.dto.profile.ProfileUpdateDto;
-import com.tolean.elab.dto.profile.ProfileViewDto;
-import com.tolean.elab.dto.profile.settings.SettingViewDto;
+import com.tolean.elab.dto.profile.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +19,7 @@ public class ProfileRestController {
     private final ProfileService profileService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<ProfileViewDto> getProfiles() {
+    public Collection<ProfileLightViewDto> getProfiles() {
         return profileService.getProfiles();
     }
 
@@ -45,16 +41,6 @@ public class ProfileRestController {
     @RequestMapping(value = "/{profileId}/changePassword", method = RequestMethod.PUT)
     public void changePassword(@PathVariable Long profileId, @RequestBody PasswordNewDto passwordNewDto) {
         profileService.changePassword(profileId, passwordNewDto);
-    }
-
-    @RequestMapping(value = "/{profileId}/settings", method = RequestMethod.GET)
-    public Collection<SettingViewDto> getSettings(@PathVariable Long profileId) {
-        return profileService.getSettings(profileId);
-    }
-
-    @RequestMapping(value = "/{profileId}/settings/{code}", method = RequestMethod.GET)
-    public SettingViewDto getSetting(@PathVariable Long profileId, @PathVariable String code) {
-        return profileService.getSetting(profileId, code);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

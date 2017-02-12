@@ -1,6 +1,5 @@
 package com.tolean.elab.persistence.profile;
 
-import com.tolean.elab.persistence.profile.setting.Setting;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 /**
  * Created by Tomasz Kołodziej
@@ -36,10 +34,6 @@ public class Profile {
     private String lastName;
     private String email;
     private boolean active;
-
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "owner_id")
-    private Set<Setting> settings;
 
 }
 

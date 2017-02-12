@@ -1,12 +1,12 @@
 package com.tolean.elab.persistence.profile;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -31,8 +31,8 @@ public class ProfileRepository {
         return Optional.of(profileBaseRepository.findByLogin(login));
     }
 
-    public List<Profile> findAll() {
-        return Lists.newArrayList(profileBaseRepository.findAll());
+    public Set<Profile> findAll() {
+        return Sets.newHashSet(profileBaseRepository.findAll());
     }
 
     public Profile save(Profile profile) {
