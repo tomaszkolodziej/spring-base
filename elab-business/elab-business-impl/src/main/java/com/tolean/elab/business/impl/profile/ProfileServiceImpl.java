@@ -53,7 +53,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
     }
 
     public ProfileViewDto getProfile(Long id) {
-        checkNotNull("20170114:1158", id);
+        checkNotNull("20170114:115800", id);
 
         Profile profile = profileRepository.findOne(id).orElseThrow(() -> new ProfileNotFoundException("20140114:1215", id));
         return profileMapper.toProfileViewDto(profile);
@@ -61,7 +61,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     @Override
     public ProfileViewDto getProfile(String login) {
-        checkNotNull("20170115:0939", login);
+        checkNotNull("20170115:093900", login);
 
         Profile profile = profileRepository.findByLogin(login).orElseThrow(() -> new ProfileNotFoundException("20170115:0940", login));
         return profileMapper.toProfileViewDto(profile);
@@ -69,7 +69,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     @Override
     public ProfileViewDto add(ProfileNewDto profileNewDto) {
-        checkNotNull("20170125:0858", profileNewDto);
+        checkNotNull("20170125:085800", profileNewDto);
 
         Profile profile = profileMapper.toProfile(profileNewDto);
         profileValidator.check(profile);
@@ -80,7 +80,7 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     @Override
     public ProfileViewDto update(Long profileId, ProfileUpdateDto profileUpdateDto) {
-        checkNotNull("20170126:1856", profileUpdateDto);
+        checkNotNull("20170126:185638", profileUpdateDto);
 
         Profile profile = profileRepository.findOne(profileId).orElseThrow(() -> new ProfileNotFoundException("20170126:1857", profileId));
         profile = profileUpdateAction.update(profile, profileUpdateDto);
@@ -93,8 +93,8 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     @Override
     public void changePassword(Long profileId, PasswordNewDto passwordNewDto) {
-        checkNotNull("20170126:1838", profileId);
-        checkNotNull("20170126:1833", passwordNewDto);
+        checkNotNull("20170126:183800", profileId);
+        checkNotNull("20170126:183301", passwordNewDto);
 
         Profile profile = profileRepository.findOne(profileId).orElseThrow(() -> new ProfileNotFoundException("20170126:1839", profileId));
         profile = profileChangePasswordAction.change(profile, passwordNewDto);
