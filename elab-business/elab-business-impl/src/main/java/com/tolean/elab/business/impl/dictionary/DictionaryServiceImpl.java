@@ -48,7 +48,7 @@ public class DictionaryServiceImpl implements DictionaryService {
     Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
       .orElseThrow(() -> new DictionaryNotFoundException("20170206:151458", dictionaryCode));
 
-    dictionaryValidator.check(dictionaryItemNewDto,dictionary);
+    dictionaryValidator.check(dictionary, dictionaryItemNewDto);
 
     DictionaryItem item = dictionaryItemMapper.toDictionaryItem(dictionaryItemNewDto);
     dictionary.getDictionaryItems().add(item);
