@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class DictionaryItemUpdateDto {
 
+  private Long id;
   private boolean active;
 
 }

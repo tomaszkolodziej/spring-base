@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
 
+import java.util.Optional;
+
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
 /**
@@ -56,17 +58,15 @@ public class DictionaryServiceImpl implements DictionaryService {
   }
 
   @Override
-  public DictionaryViewDto updateDictionaryItem(String dictionaryCode, Long dictionaryItemId, DictionaryItemUpdateDto dictionaryItemUpdateDto) {
+  public DictionaryViewDto updateDictionaryItem(String dictionaryCode,  DictionaryItemUpdateDto dictionaryItemUpdateDto) {
     checkNotNull(dictionaryCode, "20170212:162904");
-    checkNotNull(dictionaryItemId, "20170212:162906");
     checkNotNull(dictionaryItemUpdateDto, "20170212:162905");
 
     Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
       .orElseThrow(() -> new DictionaryNotFoundException("20170212:151459", dictionaryCode));
 
-    DictionaryItem item = dictionary.getDictionaryItems().get(dictionaryItemId.intValue());
-    item.setActive(dictionaryItemUpdateDto.isActive());
-    dictionary.getDictionaryItems().set(dictionaryItemId.intValue(),item);
+    DictionaryItem dictionaryItem = dictionary.getDictionaryItem(dictionaryItemUpdateDto.getId());
+    dictionaryItem.setActive(dictionaryItemUpdateDto.isActive());
     dictionary = dictionaryRepository.save(dictionary);
 
     return dictionaryMapper.toDictionaryViewDto(dictionary);

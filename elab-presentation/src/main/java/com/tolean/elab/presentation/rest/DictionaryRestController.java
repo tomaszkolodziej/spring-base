@@ -31,9 +31,9 @@ public class DictionaryRestController {
     return dictionaryService.addDictionaryItem(code,dictionaryItemNewDto);
   }
 
-  @RequestMapping(value= "/{code}/item/{itemId}", method = RequestMethod.PUT)
-  public DictionaryViewDto updateDictionaryItem(@PathVariable String code, @PathVariable Long itemId, @RequestBody DictionaryItemUpdateDto dictionaryItemUpdateDto) {
-    return dictionaryService.updateDictionaryItem(code,itemId,dictionaryItemUpdateDto);
+  @RequestMapping(value= "/{code}/item/update", method = RequestMethod.PUT)
+  public DictionaryViewDto updateDictionaryItem(@PathVariable String code, @RequestBody DictionaryItemUpdateDto dictionaryItemUpdateDto) {
+    return dictionaryService.updateDictionaryItem(code,dictionaryItemUpdateDto);
   }
 
 }
