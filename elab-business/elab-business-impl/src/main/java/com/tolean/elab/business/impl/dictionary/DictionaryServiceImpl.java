@@ -13,9 +13,6 @@ import com.tolean.elab.persistence.dictionary.DictionaryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
-
-import java.util.Optional;
 
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
@@ -32,7 +29,7 @@ public class DictionaryServiceImpl implements DictionaryService {
   private final DictionaryValidator dictionaryValidator;
 
   public DictionaryViewDto getDictionary(String code) {
-    checkNotNull("20170131:152913", code);
+    checkNotNull(code, "20170131:152913");
 
     Dictionary dictionary = dictionaryRepository.findByCode(code)
       .orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", code));
@@ -40,13 +37,13 @@ public class DictionaryServiceImpl implements DictionaryService {
     return dictionaryMapper.toDictionaryViewDto(dictionary);
   }
 
-  @Override
-  public DictionaryViewDto addDictionaryItem(String dictionaryCode, DictionaryItemNewDto dictionaryItemNewDto) {
-    checkNotNull(dictionaryCode, "20170206:162901");
-    checkNotNull(dictionaryItemNewDto, "20170206:162900");
+    @Override
+    public DictionaryViewDto addDictionaryItem(String code, DictionaryItemNewDto dictionaryItemNewDto) {
+        checkNotNull(code, "20170131:152900");
+        checkNotNull(dictionaryItemNewDto, "20170131:152901");
 
-    Dictionary dictionary = dictionaryRepository.findByCode(dictionaryCode)
-      .orElseThrow(() -> new DictionaryNotFoundException("20170206:151458", dictionaryCode));
+    Dictionary dictionary = dictionaryRepository.findByCode(code)
+      .orElseThrow(() -> new DictionaryNotFoundException("20170206:151458", code));
 
     dictionaryValidator.check(dictionary, dictionaryItemNewDto);
 
