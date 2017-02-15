@@ -32,10 +32,10 @@ public class DictionaryServiceImpl implements DictionaryService {
   private final DictionaryValidator dictionaryValidator;
 
   public DictionaryViewDto getDictionary(String code) {
-    checkNotNull("20170131:1529", code);
+    checkNotNull("20170131:152913", code);
 
     Dictionary dictionary = dictionaryRepository.findByCode(code)
-      .orElseThrow(() -> new EidIllegalStateException("20170201:151458", "Słownik o kodzie " + code + " nie istnieje"));
+      .orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", code));
 
     return dictionaryMapper.toDictionaryViewDto(dictionary);
   }
@@ -51,6 +51,8 @@ public class DictionaryServiceImpl implements DictionaryService {
     dictionaryValidator.check(dictionary, dictionaryItemNewDto);
 
     DictionaryItem item = dictionaryItemMapper.toDictionaryItem(dictionaryItemNewDto);
+    item.setActive(true);
+
     dictionary.getDictionaryItems().add(item);
     dictionary = dictionaryRepository.save(dictionary);
 
@@ -58,7 +60,7 @@ public class DictionaryServiceImpl implements DictionaryService {
   }
 
   @Override
-  public DictionaryViewDto updateDictionaryItem(String dictionaryCode,  DictionaryItemUpdateDto dictionaryItemUpdateDto) {
+  public DictionaryViewDto updateDictionaryItem(String dictionaryCode, DictionaryItemUpdateDto dictionaryItemUpdateDto) {
     checkNotNull(dictionaryCode, "20170212:162904");
     checkNotNull(dictionaryItemUpdateDto, "20170212:162905");
 
@@ -66,7 +68,7 @@ public class DictionaryServiceImpl implements DictionaryService {
       .orElseThrow(() -> new DictionaryNotFoundException("20170212:151459", dictionaryCode));
 
     DictionaryItem dictionaryItem = dictionary.getDictionaryItem(dictionaryItemUpdateDto.getId());
-    dictionaryItem.setActive(dictionaryItemUpdateDto.isActive());
+    dictionaryItemMapper.intoDictionaryItem(dictionaryItemUpdateDto, dictionaryItem);
     dictionary = dictionaryRepository.save(dictionary);
 
     return dictionaryMapper.toDictionaryViewDto(dictionary);

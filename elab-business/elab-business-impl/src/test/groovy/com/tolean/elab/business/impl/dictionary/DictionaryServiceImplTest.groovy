@@ -54,6 +54,10 @@ class DictionaryServiceImplTest extends Specification {
 
       DictionaryItemNewDto dictionaryItemNewDto = DictionaryItemNewDto.builder().name("nowa").build()
 
+      dictionaryItemMapperMock.toDictionaryItem(dictionaryItemNewDto) >> Mock(DictionaryItem) {
+        getName() >> "nowa"
+      }
+
       dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
         dictionaryItemMapperMock, dictionaryValidatorMock)
     when:

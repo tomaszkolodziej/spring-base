@@ -6,6 +6,7 @@ import com.tolean.elab.dto.dictionary.DictionaryItemViewDto;
 import com.tolean.elab.persistence.dictionary.DictionaryItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 /**
  * @author Tomasz Kołodziej <tomasz.kolodziej@coi.gov.pl>
@@ -16,7 +17,10 @@ public interface DictionaryItemMapper {
   DictionaryItemViewDto toDictionaryItemViewDto(DictionaryItem dictionaryItem);
 
   @Mapping(target = "id", ignore = true)
-  @Mapping(target = "active", ignore = true, defaultValue = "true")
+  @Mapping(target = "active", ignore = true)
   DictionaryItem toDictionaryItem(DictionaryItemNewDto dictionaryItemNewDto);
+
+  @Mapping(target = "name", ignore = true)
+  void intoDictionaryItem(DictionaryItemUpdateDto dictionaryItemUpdateDto, @MappingTarget DictionaryItem dictionaryItem);
 
 }

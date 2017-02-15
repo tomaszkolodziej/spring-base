@@ -1,6 +1,5 @@
 package com.tolean.elab.business.impl.dictionary.validator;
 
-import com.tolean.elab.business.impl.validation.ValidationError;
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
 import com.tolean.elab.persistence.dictionary.Dictionary;
 import org.apache.commons.lang3.StringUtils;
