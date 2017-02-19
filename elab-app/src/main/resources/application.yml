@@ -11,6 +11,10 @@ spring.datasource:
     testWhileIdle: true
     driver-class-name: org.postgresql.Driver
 
+spring.data.mongodb:
+    host: localhost
+    database: elab
+
 server:
     port: 8090
     contextPath: /elab/api

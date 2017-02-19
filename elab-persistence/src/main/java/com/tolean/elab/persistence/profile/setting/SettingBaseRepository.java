@@ -11,9 +11,9 @@ import java.util.Set;
 @Repository
 public interface SettingBaseRepository extends MongoRepository<Setting, String> {
 
-    Set<Setting> findByProfileId(Long profileId);
+    Set<Setting> findByProfileIdIsNull();
 
-    Setting findOneByProfileIdAndCode(Long profileId, String code);
+    Set<Setting> findByProfileId(Long profileId);
 
     Setting findOneByProfileIdAndType(Long profileId, String type);
 

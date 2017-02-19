@@ -25,11 +25,10 @@ public class SettingMapper {
         checkNotNull(setting, "20170212:191300");
 
         return SettingViewDto.builder()
-                .code(setting.getCode())
+                .type(setting.getType().name())
                 .name(setting.getName())
                 .description(setting.getDescription())
                 .groupName(setting.getGroup().getName())
-                .onlyAdministratorCanChange(setting.isOnlyAdministratorCanChange())
                 .value(setting.getValue())
                 .build();
     }

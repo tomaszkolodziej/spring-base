@@ -3,7 +3,9 @@ package com.tolean.elab.business.impl.profile.settings;
 import com.tolean.elab.mapper.profile.settings.SettingMapper;
 import com.tolean.elab.persistence.profile.Profile;
 import com.tolean.elab.persistence.profile.setting.Setting;
+import com.tolean.elab.persistence.profile.setting.SettingType;
 import com.tolean.elab.persistence.profile.setting.SettingRepository;
+import com.tolean.elab.persistence.profile.setting.SettingValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,14 +36,17 @@ public class SettingService {
         checkNotNull(profileId, "20170212:195923");
         checkNotNull(code, "20170212:192001");
 
-        return settingRepository.findByProfileIdAndCode(profileId, code)
+        SettingType settingType = SettingType.valueOf(code);
+
+        return settingRepository.findByProfileIdAndType(profileId, settingType)
                 .orElseThrow(settingNotFoundException(code));
     }
 
-    public <T> T getSettingValue(Class<T> clazz) {
+    public <V, T extends SettingValue<V>> T getSettingValue(Class<T> clazz, SettingType type) {
         checkNotNull(clazz, "20170212:193401");
+        checkNotNull(type, "20170219161800");
 
-        Setting setting = settingRepository.findByProfileIdAndType(getCurrentProfile().getId(), clazz.getName())
+        Setting setting = settingRepository.findByProfileIdAndType(getCurrentProfile().getId(), type)
                 .orElseThrow(settingNotFoundException(clazz.getName()));
         return clazz.cast(setting.getValue());
     }

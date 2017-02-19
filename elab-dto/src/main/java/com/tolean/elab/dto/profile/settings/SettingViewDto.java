@@ -14,11 +14,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SettingViewDto {
 
-    private String code;
+    private String type;
     private String name;
     private String description;
     private String groupName;
-    private boolean onlyAdministratorCanChange;
     private Object value;
 
 }

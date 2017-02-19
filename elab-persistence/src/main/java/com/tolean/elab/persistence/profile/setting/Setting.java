@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by Tomasz Kołodziej
  */
-@Document
+@Document(collection = "settings")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,13 +21,10 @@ public class Setting {
     private String id;
 
     private Long profileId;
-    private String code;
+    private SettingType type;
     private String name;
     private String description;
     private Group group;
-    private String type;
-    private boolean onlyAdministratorCanChange;
-    private SettingValue defaultValue;
     private SettingValue value;
 
 }
