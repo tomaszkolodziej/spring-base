@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DictionaryBaseRepository extends CrudRepository<Dictionary, Long> {
 
-  Dictionary findByCode(String code);
+  Dictionary findOneByCode(String code);
 
 }

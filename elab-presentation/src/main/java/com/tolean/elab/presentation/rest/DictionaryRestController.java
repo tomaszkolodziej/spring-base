@@ -1,13 +1,12 @@
 package com.tolean.elab.presentation.rest;
 
 import com.tolean.elab.business.api.dictionary.DictionaryService;
+import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
+import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
@@ -19,13 +18,22 @@ import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DictionaryRestController {
 
-    private final DictionaryService dictionaryService;
+  private final DictionaryService dictionaryService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public DictionaryViewDto getDictionary(@RequestParam String code) {
-        checkNotNull("20170131:1536", code);
+  @RequestMapping(method = RequestMethod.GET)
+  public DictionaryViewDto getDictionary(@RequestParam String code) {
+    checkNotNull("20170131:1536", code);
+    return dictionaryService.getDictionary(code);
+  }
 
-        return dictionaryService.getDictionaries(code);
-    }
+  @RequestMapping(value= "/{code}/item", method = RequestMethod.POST)
+  public DictionaryViewDto addDictionaryItem(@PathVariable String code, @RequestBody DictionaryItemNewDto dictionaryItemNewDto) {
+    return dictionaryService.addDictionaryItem(code,dictionaryItemNewDto);
+  }
+
+  @RequestMapping(value= "/{code}/item", method = RequestMethod.PUT)
+  public DictionaryViewDto updateDictionaryItem(@PathVariable String code, @RequestBody DictionaryItemUpdateDto dictionaryItemUpdateDto) {
+    return dictionaryService.updateDictionaryItem(code, dictionaryItemUpdateDto);
+  }
 
 }
