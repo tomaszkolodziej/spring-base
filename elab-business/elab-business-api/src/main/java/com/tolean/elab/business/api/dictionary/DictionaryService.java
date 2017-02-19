@@ -1,5 +1,7 @@
 package com.tolean.elab.business.api.dictionary;
 
+import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
+import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 
 /**
@@ -7,6 +9,10 @@ import com.tolean.elab.dto.dictionary.DictionaryViewDto;
  */
 public interface DictionaryService {
 
-  DictionaryViewDto getDictionaries(String code);
+  DictionaryViewDto getDictionary(String code);
+
+  DictionaryViewDto addDictionaryItem(String code, DictionaryItemNewDto dictionaryItemNewDto);
+
+  DictionaryViewDto updateDictionaryItem(String code, DictionaryItemUpdateDto dictionaryItemUpdateDto);
 
 }

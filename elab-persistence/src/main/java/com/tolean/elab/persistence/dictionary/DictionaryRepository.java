@@ -15,13 +15,18 @@ import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DictionaryRepository {
 
-    private final DictionaryBaseRepository dictionaryBaseRepository;
+  private final DictionaryBaseRepository dictionaryBaseRepository;
 
-    public Optional<Dictionary> findByCode(String code) {
-        checkNotNull("20170131:1520", code);
+  public Optional<Dictionary> findByCode(String code) {
+    checkNotNull(code, "20170131:152012");
 
-        Dictionary dictionary = dictionaryBaseRepository.findByCode(code);
-        return Optional.ofNullable(dictionary);
-    }
+    return Optional.ofNullable(dictionaryBaseRepository.findOneByCode(code));
+  }
+
+  public Dictionary save(Dictionary dictionary) {
+    checkNotNull(dictionary, "20170131:152001");
+
+    return dictionaryBaseRepository.save(dictionary);
+  }
 
 }
