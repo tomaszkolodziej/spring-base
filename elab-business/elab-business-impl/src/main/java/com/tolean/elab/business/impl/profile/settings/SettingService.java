@@ -5,7 +5,7 @@ import com.tolean.elab.persistence.profile.Profile;
 import com.tolean.elab.persistence.profile.setting.Setting;
 import com.tolean.elab.persistence.profile.setting.SettingType;
 import com.tolean.elab.persistence.profile.setting.SettingRepository;
-import com.tolean.elab.persistence.profile.setting.SettingValue;
+import com.tolean.elab.persistence.profile.setting.value.SettingValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,11 +44,11 @@ public class SettingService {
 
     public <V, T extends SettingValue<V>> T getSettingValue(Class<T> clazz, SettingType type) {
         checkNotNull(clazz, "20170212:193401");
-        checkNotNull(type, "20170219161800");
+        checkNotNull(type, "20170219:161800");
 
         Setting setting = settingRepository.findByProfileIdAndType(getCurrentProfile().getId(), type)
                 .orElseThrow(settingNotFoundException(clazz.getName()));
-        return clazz.cast(setting.getValue());
+        return clazz.cast(setting.getSettingValue());
     }
 
     private Profile getCurrentProfile() {

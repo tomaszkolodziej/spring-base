@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Setting {
+public class Setting<V> {
 
     @Id
     private String id;
@@ -25,6 +25,6 @@ public class Setting {
     private String name;
     private String description;
     private Group group;
-    private SettingValue value;
+    private V settingValue;
 
 }

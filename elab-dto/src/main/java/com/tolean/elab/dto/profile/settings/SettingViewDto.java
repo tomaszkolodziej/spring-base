@@ -18,6 +18,6 @@ public class SettingViewDto {
     private String name;
     private String description;
     private String groupName;
-    private Object value;
+    private Object settingValue;
 
 }

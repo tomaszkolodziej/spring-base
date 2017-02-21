@@ -29,7 +29,7 @@ public class SettingMapper {
                 .name(setting.getName())
                 .description(setting.getDescription())
                 .groupName(setting.getGroup().getName())
-                .value(setting.getValue())
+                .settingValue(setting.getSettingValue())
                 .build();
     }
 

@@ -1,25 +1,32 @@
 package com.tolean.elab.business.impl.profile.settings.impl;
 
-import com.tolean.elab.persistence.profile.setting.SettingType;
-import com.tolean.elab.persistence.profile.setting.SettingValue;
+import com.tolean.elab.persistence.profile.setting.value.SettingValue;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by Tomasz Kołodziej
  */
 @Data
-public class ShortDateFormatSettingValue extends SettingValue<String> {
+@NoArgsConstructor
+@AllArgsConstructor
+public class ShortDateFormatSettingValue implements SettingValue<String> {
 
-    private String format;
+    private static final String DEFAULT_VALUE = "dd-MM-yyyy";
 
-    @Override
-    public SettingType getType() {
-        return SettingType.SHORT_DATE_FORMAT;
-    }
+    private String value;
 
     @Override
     public String getDefaultValue() {
-        return "dd-MM-yyyy";
+        return DEFAULT_VALUE;
+    }
+
+    @Override
+    public void checkValue() {
+        if (!DEFAULT_VALUE.equals(value) && !"yyyy-MM-dd".equals(value)) {
+            throw new BadSettingValueException("20170221:212100");
+        }
     }
 
 }
