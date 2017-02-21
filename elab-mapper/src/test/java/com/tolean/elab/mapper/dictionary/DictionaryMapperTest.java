@@ -13,11 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class DictionaryMapperTest {
 
-    private DictionaryMapper dictionaryMapper;
+    private DictionaryItemMapper dictionaryItemMapper;
+    private DictionaryMapperImpl dictionaryMapper;
 
     @Before
     public void setup() {
-        //dictionaryMapper = new DictionaryMapper();
+        dictionaryMapper = new DictionaryMapperImpl(dictionaryItemMapper);
     }
 
     @Test
