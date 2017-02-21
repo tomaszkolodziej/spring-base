@@ -13,16 +13,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DictionaryMapperImpl implements DictionaryMapper{
 
-  private final DictionaryItemMapper dictionaryItemMapper;
+    private final DictionaryItemMapper dictionaryItemMapper;
 
-  @Override
-  public DictionaryViewDto toDictionaryViewDto(Dictionary dictionary) {
-      DictionaryViewDto dictionaryViewDto = new DictionaryViewDto();
-      dictionaryViewDto.setCode(dictionary.getCode());
-      dictionaryViewDto.setName(dictionary.getName());
-      dictionaryViewDto.setActive(dictionary.isActive());
-      dictionaryViewDto.setDefaultValue(dictionary.getDefaultValue() != null ? dictionary.getDefaultValue().getName() : "");
-      dictionaryViewDto.setDictionaryItems(dictionaryItemMapper.toDictionaryItemViewDtoList(dictionary.getDictionaryItems()));
-      return dictionaryViewDto;
-  }
+    @Override
+    public DictionaryViewDto toDictionaryViewDto(Dictionary dictionary) {
+        DictionaryViewDto dictionaryViewDto = new DictionaryViewDto();
+        dictionaryViewDto.setCode(dictionary.getCode());
+        dictionaryViewDto.setName(dictionary.getName());
+        dictionaryViewDto.setActive(dictionary.isActive());
+        dictionaryViewDto.setDefaultValue(dictionary.getDefaultValue() != null ? dictionary.getDefaultValue().getName() : "");
+        dictionaryViewDto.setDictionaryItems(dictionaryItemMapper.toDictionaryItemViewDtoList(dictionary.getDictionaryItems()));
+        return dictionaryViewDto;
+    }
 }

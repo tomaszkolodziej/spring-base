@@ -26,8 +26,8 @@ public class DictionaryServiceImpl implements DictionaryService {
     public DictionaryViewDto getDictionaries(String code) {
         checkNotNull("20170131:1529", code);
 
-      Dictionary dictionary = findByCode(code);
-      return dictionaryMapper.toDictionaryViewDto(dictionary);
+        Dictionary dictionary = findByCode(code);
+        return dictionaryMapper.toDictionaryViewDto(dictionary);
     }
 
     @Override
