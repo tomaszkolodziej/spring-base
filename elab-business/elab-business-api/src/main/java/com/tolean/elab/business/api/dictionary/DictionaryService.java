@@ -13,6 +13,6 @@ public interface DictionaryService {
 
   DictionaryViewDto addDictionaryItem(String code, DictionaryItemNewDto dictionaryItemNewDto);
 
-  DictionaryViewDto updateDictionaryItem(String code, DictionaryItemUpdateDto dictionaryItemUpdateDto);
+  DictionaryViewDto updateDictionaryItem(String code, Long dictionaryItemId, DictionaryItemUpdateDto dictionaryItemUpdateDto);
 
 }

@@ -5,7 +5,7 @@ import com.tolean.elab.persistence.dictionary.Dictionary;
 import org.mapstruct.Mapper;
 
 /**
- * @author Tomasz Kołodziej <tomasz.kolodziej@coi.gov.pl>
+ * @author Tomasz Kołodziej
  */
 @Mapper(uses = DictionaryItemMapper.class)
 public interface DictionaryMapper {

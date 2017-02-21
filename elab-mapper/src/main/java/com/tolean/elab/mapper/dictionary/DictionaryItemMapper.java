@@ -14,13 +14,14 @@ import org.mapstruct.MappingTarget;
 @Mapper
 public interface DictionaryItemMapper {
 
-  DictionaryItemViewDto toDictionaryItemViewDto(DictionaryItem dictionaryItem);
+    DictionaryItemViewDto toDictionaryItemViewDto(DictionaryItem dictionaryItem);
 
-  @Mapping(target = "id", ignore = true)
-  @Mapping(target = "active", ignore = true)
-  DictionaryItem toDictionaryItem(DictionaryItemNewDto dictionaryItemNewDto);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "active", ignore = true)
+    DictionaryItem toDictionaryItem(DictionaryItemNewDto dictionaryItemNewDto);
 
-  @Mapping(target = "name", ignore = true)
-  void intoDictionaryItem(DictionaryItemUpdateDto dictionaryItemUpdateDto, @MappingTarget DictionaryItem dictionaryItem);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "name", ignore = true)
+    void intoDictionaryItem(DictionaryItemUpdateDto dictionaryItemUpdateDto, @MappingTarget DictionaryItem dictionaryItem);
 
 }
