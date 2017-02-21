@@ -17,6 +17,22 @@
     </properties>
 
     <dependencies>
+        <!-- mongo -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mongeez</groupId>
+            <artifactId>mongeez</artifactId>
+            <version>0.9.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.hzpz.spring.boot</groupId>
+            <artifactId>mongeez-spring-boot-starter</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+        <!-- end mongo -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>

@@ -1,31 +1,30 @@
 package com.tolean.elab.persistence.profile.setting;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by Tomasz Kołodziej
  */
-@Entity
+@Document(collection = "settings")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Setting {
+@Builder
+public class Setting<V> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "setting_gen")
-    @SequenceGenerator(name = "setting_gen", sequenceName = "setting_id_seq")
-    private Long id;
-    private String code;
+    private String id;
+
+    private Long profileId;
+    private SettingType type;
     private String name;
     private String description;
-
-    @Enumerated(EnumType.STRING)
-    private ValueType valueType;
-
-    private String value;
+    private Group group;
+    private V settingValue;
 
 }

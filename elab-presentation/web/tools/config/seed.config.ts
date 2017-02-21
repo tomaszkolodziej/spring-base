@@ -30,15 +30,15 @@ export const BUILD_TYPES: BuildType = {
 };
 
 /**
- * This class represents the basic configuration of the seed.
+ * This class represents the basic settings of the seed.
  * It provides the following:
  * - Constants for directories, ports, versions etc.
  * - Injectable NPM dependencies
  * - Injectable application assets
  * - Temporary editor files to be ignored by the watcher and asset builder
- * - SystemJS configuration
- * - Autoprefixer configuration
- * - BrowserSync configuration
+ * - SystemJS settings
+ * - Autoprefixer settings
+ * - BrowserSync settings
  * - Utilities
  */
 export class SeedConfig {
@@ -311,7 +311,7 @@ export class SeedConfig {
   }
 
   /**
-   * The configuration of SystemJS for the `dev` environment.
+   * The settings of SystemJS for the `dev` environment.
    * @type {any}
    */
   SYSTEM_CONFIG_DEV: any = {
@@ -350,14 +350,14 @@ export class SeedConfig {
   };
 
   /**
-   * The configuration of SystemJS of the application.
-   * Per default, the configuration of the `dev` environment will be used.
+   * The settings of SystemJS of the application.
+   * Per default, the settings of the `dev` environment will be used.
    * @type {any}
    */
   SYSTEM_CONFIG: any = this.SYSTEM_CONFIG_DEV;
 
   /**
-   * The system builder configuration of the application.
+   * The system builder settings of the application.
    * @type {any}
    */
   SYSTEM_BUILDER_CONFIG: any = {
@@ -368,7 +368,7 @@ export class SeedConfig {
       join('node_modules', '@angular', '*', 'package.json')
     ],
     paths: {
-      // Note that for multiple apps this configuration need to be updated
+      // Note that for multiple apps this settings need to be updated
       // You will have to include entries for each individual application in
       // `src/client`.
       [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this.BOOTSTRAP_DIR}/*`,
@@ -421,7 +421,7 @@ export class SeedConfig {
   };
 
   /**
-   * The Autoprefixer configuration for the application.
+   * The Autoprefixer settings for the application.
    * @type {Array}
    */
   BROWSER_LIST = [
@@ -449,7 +449,7 @@ export class SeedConfig {
    */
   PLUGIN_CONFIGS: any = {
     /**
-     * The BrowserSync configuration of the application.
+     * The BrowserSync settings of the application.
      * The default open behavior is to open the browser. To prevent the browser from opening use the `--b`  flag when
      * running `npm start` (tested with serve.dev).
      * Example: `npm start -- --b`
@@ -500,7 +500,7 @@ export class SeedConfig {
   };
 
   /**
-   * Karma reporter configuration
+   * Karma reporter settings
    */
   getKarmaReporters(): any {
     return {
@@ -534,7 +534,7 @@ export class SeedConfig {
   }
 
   /**
-   * Locate a plugin configuration object by plugin key.
+   * Locate a plugin settings object by plugin key.
    * @param {any} pluginKey The object key to look up in PLUGIN_CONFIGS.
    */
   getPluginConfig(pluginKey: string): any {

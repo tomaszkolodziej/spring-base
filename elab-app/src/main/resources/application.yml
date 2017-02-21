@@ -11,6 +11,11 @@ spring.datasource:
     testWhileIdle: true
     driver-class-name: org.postgresql.Driver
 
+
+spring.data.mongodb:
+    host: localhost
+    database: elab
+
 server:
     port: 8090
     contextPath: /elab/api
@@ -25,4 +30,7 @@ app:
         secret: verySecretP@ssw0rd!!
         expiration: 604800
     route.authentication.refresh: refresh
+
+flyway:
+  locations: db/flyway
 
