@@ -24,6 +24,7 @@ public class SettingRepository {
 
         return Optional.ofNullable(settingBaseRepository.findOneByProfileIdAndType(profileId, type.name()));
     }
+
     public Set<Setting> findAll(Long profileId) {
         checkNotNull(profileId, "20170212:195812");
 

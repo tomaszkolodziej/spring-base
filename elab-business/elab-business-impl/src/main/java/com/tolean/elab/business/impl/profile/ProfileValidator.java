@@ -2,7 +2,8 @@ package com.tolean.elab.business.impl.profile;
 
 import com.tolean.elab.business.impl.validation.ValidationError;
 import com.tolean.elab.dto.profile.PasswordNewDto;
-import com.tolean.elab.persistence.profile.Profile;
+import com.tolean.elab.dto.profile.ProfileNewDto;
+import com.tolean.elab.dto.profile.ProfileUpdateDto;
 import org.springframework.stereotype.Component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -20,19 +21,36 @@ public class ProfileValidator {
     private static final String NAME_FIELD = "name";
     private static final int NAME_MAX_LENGTH = 20;
 
-    public void check(Profile profile) {
-        checkNotNull("20170125:090609", profile);
+    public void checkNew(ProfileNewDto profileNewDto) {
+        checkNotNull("20170125:090609", profileNewDto);
 
         ValidationError validationError = ValidationError.builder()
                 .id("20170125:092200")
                 .standardValidationError()
                 .fields();
 
-        validateLogin(profile.getLogin(), validationError);
+        validateLogin(profileNewDto.getLogin(), validationError);
 
         validateName(NAME_FIELD, validationError);
 
-        if (isBlank(profile.getEmail())) {
+        if (isBlank(profileNewDto.getEmail())) {
+            validationError.required("email");
+        }
+
+        validationError.throwExceptionIfHasErrorsOnFields();
+    }
+
+    public void checkUpdate(ProfileUpdateDto profileUpdateDto) {
+        checkNotNull("20170221:090609", profileUpdateDto);
+
+        ValidationError validationError = ValidationError.builder()
+                .id("20170221:092229")
+                .standardValidationError()
+                .fields();
+
+        validateName(NAME_FIELD, validationError);
+
+        if (isBlank(profileUpdateDto.getEmail())) {
             validationError.required("email");
         }
 

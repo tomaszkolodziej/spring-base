@@ -2,7 +2,6 @@ package com.tolean.elab.business.impl.profile;
 
 import com.tolean.elab.business.api.profile.ProfileService;
 import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction;
-import com.tolean.elab.business.impl.profile.action.ProfileUpdateAction;
 import com.tolean.elab.business.impl.profile.settings.SettingService;
 import com.tolean.elab.dto.profile.*;
 import com.tolean.elab.mapper.profile.ProfileMapper;
@@ -31,7 +30,6 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
 
     private final SettingService settingService;
     private final ProfileRepository profileRepository;
-    private final ProfileUpdateAction profileUpdateAction;
     private final ProfileChangePasswordAction profileChangePasswordAction;
     private final ProfileMapper profileMapper;
     private final SettingMapper settingMapper;
@@ -72,10 +70,11 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
     public ProfileViewDto add(ProfileNewDto profileNewDto) {
         checkNotNull("20170125:085800", profileNewDto);
 
-        Profile profile = profileMapper.toProfile(profileNewDto);
-        profileValidator.check(profile);
+        profileValidator.checkNew(profileNewDto);
 
+        Profile profile = profileMapper.toProfile(profileNewDto);
         profile = profileRepository.save(profile);
+
         return profileMapper.toProfileViewDto(profile);
     }
 
@@ -83,12 +82,12 @@ public class ProfileServiceImpl implements UserDetailsService, ProfileService {
     public ProfileViewDto update(Long profileId, ProfileUpdateDto profileUpdateDto) {
         checkNotNull("20170126:185638", profileUpdateDto);
 
+        profileValidator.checkUpdate(profileUpdateDto);
+
         Profile profile = profileRepository.findOne(profileId).orElseThrow(() -> new ProfileNotFoundException("20170126:185700", profileId));
-        profile = profileUpdateAction.update(profile, profileUpdateDto);
-
-        profileValidator.check(profile);
-
+        profileMapper.intoProfile(profile, profileUpdateDto);
         profile = profileRepository.save(profile);
+
         return profileMapper.toProfileViewDto(profile);
     }
 
