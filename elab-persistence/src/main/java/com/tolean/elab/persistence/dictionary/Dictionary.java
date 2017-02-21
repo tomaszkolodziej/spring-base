@@ -1,12 +1,14 @@
 package com.tolean.elab.persistence.dictionary;
 
 import lombok.Data;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import java.util.List;
 
@@ -26,6 +28,10 @@ public class Dictionary {
   private String name;
   private String description;
   private boolean active;
+
+  @OneToOne
+  @JoinColumn(name = "default_item_id")
+  private DictionaryItem defaultValue;
 
   @OneToMany
   @JoinColumn(name = "dictionary_id")

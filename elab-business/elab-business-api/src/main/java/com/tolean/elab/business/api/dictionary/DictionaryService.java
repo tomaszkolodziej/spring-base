@@ -9,4 +9,6 @@ public interface DictionaryService {
 
   DictionaryViewDto getDictionaries(String code);
 
+  DictionaryViewDto updateDefaultValue(String code, String defaultValue);
+
 }

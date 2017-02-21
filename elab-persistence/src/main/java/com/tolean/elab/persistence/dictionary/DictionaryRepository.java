@@ -24,4 +24,10 @@ public class DictionaryRepository {
         return Optional.ofNullable(dictionary);
     }
 
+    public Dictionary save(Dictionary dictionary) {
+        checkNotNull(dictionary, "20170221:1949", "");
+
+        return dictionaryBaseRepository.save(dictionary);
+    }
+
 }

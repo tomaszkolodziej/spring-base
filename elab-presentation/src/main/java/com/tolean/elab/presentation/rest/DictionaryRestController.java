@@ -4,6 +4,8 @@ import com.tolean.elab.business.api.dictionary.DictionaryService;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +28,13 @@ public class DictionaryRestController {
         checkNotNull("20170131:1536", code);
 
         return dictionaryService.getDictionaries(code);
+    }
+
+    @RequestMapping(value = "/{code}", method = RequestMethod.PUT)
+    public DictionaryViewDto update(@PathVariable String code, @RequestBody String defaultValue) {
+        checkNotNull("20170221:1958", code);
+
+        return dictionaryService.updateDefaultValue(code, defaultValue);
     }
 
 }

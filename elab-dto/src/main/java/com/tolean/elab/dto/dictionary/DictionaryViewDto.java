@@ -12,6 +12,7 @@ public class DictionaryViewDto {
   private String code;
   private String name;
   private boolean active;
+  private String defaultValue;
   private List<DictionaryItemViewDto> dictionaryItems;
 
 }
