@@ -8,6 +8,6 @@ import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
 public class DictionaryItemNotFoundException extends EidIllegalStateException {
 
     public DictionaryItemNotFoundException(String eid, String value) {
-      super(eid, "Wartość słownika " + value + " nie została odnaleziona.");
+        super(eid, "Wartość słownika " + value + " nie została odnaleziona.");
     }
 }

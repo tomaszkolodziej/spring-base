@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/do';  // for debugging
+// import 'rxjs/addDictionaryItem/operator/do';  // for debugging
 
 /**
- * This class provides the NameList service with methods to read names and add names.
+ * This class provides the NameList service with methods to read names and addDictionaryItem names.
  */
 @Injectable()
 export class NameListService {

@@ -10,6 +10,6 @@ import org.mapstruct.Mapper;
 @Mapper(uses = DictionaryItemMapper.class)
 public interface DictionaryMapper {
 
-  DictionaryViewDto toDictionaryViewDto(Dictionary dictionary);
+    DictionaryViewDto toDictionaryViewDto(Dictionary dictionary);
 
 }

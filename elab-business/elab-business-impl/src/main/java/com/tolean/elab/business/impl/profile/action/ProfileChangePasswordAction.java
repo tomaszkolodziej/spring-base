@@ -5,6 +5,7 @@ import com.tolean.elab.dto.profile.PasswordNewDto;
 import com.tolean.elab.persistence.profile.Profile;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
@@ -24,8 +25,8 @@ public class ProfileChangePasswordAction {
 
         profileValidator.checkPassword(passwordNewDto);
 
-        // TODO szyfrowanie hasla
-        String encodedPassword = passwordNewDto.getNewPassword();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(passwordNewDto.getNewPassword());
         profile.setPassword(encodedPassword);
 
         return profile;

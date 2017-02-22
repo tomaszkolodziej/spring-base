@@ -13,7 +13,7 @@ import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 /**
  * Example - global error:
  * <p>
- * ValidationError.builder().id("20161105:1355").code("ERROR").message("Exception message").thrown();
+ * ValidationError.builder().id("20161105:135500").code("ERROR").message("Exception message").thrown();
  * <p>
  * Example - errors on fields:
  * <p>
@@ -39,7 +39,7 @@ public class ValidationError {
     }
 
     public ValidationError id(String id) {
-        this.id = checkNotNull("20170125:0910", id);
+        this.id = checkNotNull("20170125:091000", id);
         return this;
     }
 

@@ -13,23 +13,22 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class DictionaryMapperTest {
 
-    private DictionaryItemMapper dictionaryItemMapper;
-    private DictionaryMapperImpl dictionaryMapper;
+ private DictionaryMapperImpl dictionaryMapper;
 
-    @Before
-    public void setup() {
-        dictionaryMapper = new DictionaryMapperImpl(dictionaryItemMapper);
-    }
+  @Before
+  public void setup() {
+    dictionaryMapper = new DictionaryMapperImpl();
+  }
 
-    @Test
-    @Ignore
-    public void shouldMapDictionaryToDictionaryViewDto() {
-        Dictionary dictionary = new Dictionary();
-        dictionary.setCode("code");
+  @Test
+  @Ignore
+  public void shouldMapDictionaryToDictionaryViewDto() {
+    Dictionary dictionary = new Dictionary();
+    dictionary.setCode("code");
 
-        DictionaryViewDto dictionaryViewDto = dictionaryMapper.toDictionaryViewDto(dictionary);
+    DictionaryViewDto dictionaryViewDto = dictionaryMapper.toDictionaryViewDto(dictionary);
 
-        assertThat(dictionaryViewDto.getCode()).isEqualTo(dictionary.getCode());
-    }
+    assertThat(dictionaryViewDto.getCode()).isEqualTo(dictionary.getCode());
+  }
 
 }

@@ -1,28 +1,72 @@
 package com.tolean.elab.business.impl.dictionary
 
+import com.tolean.elab.business.impl.dictionary.validator.DictionaryValidator
+import com.tolean.elab.dto.dictionary.DictionaryItemNewDto
+import com.tolean.elab.mapper.dictionary.DictionaryItemMapper
 import com.tolean.elab.mapper.dictionary.DictionaryMapper
+import com.tolean.elab.persistence.dictionary.DictionaryItem
 import com.tolean.elab.persistence.dictionary.DictionaryRepository
 import spock.lang.Specification
 
 /**
- * @author Bartosz Olszanski <bartosz.olszanski@coi.gov.pl>
+ * Created by Janusz Nocek on 2017-02-13.
  */
 class DictionaryServiceImplTest extends Specification {
+
+    DictionaryRepository dictionaryRepositoryMock
+    DictionaryMapper dictionaryMapperMock
+    DictionaryItemMapper dictionaryItemMapperMock
+    DictionaryValidator dictionaryValidatorMock
+    DictionaryServiceImpl dictionaryService
   
-    DictionaryRepository dictionaryRepository
-    DictionaryMapper dictionaryMapper
-    DictionaryServiceImpl dictionaryServiceImpl
-    
     def setup() {
-        dictionaryRepository = Mock(DictionaryRepository)
-        dictionaryMapper = Mock(DictionaryMapper)
-        dictionaryServiceImpl = new DictionaryServiceImpl(dictionaryRepository, dictionaryMapper)
+        dictionaryRepositoryMock = Mock(DictionaryRepository) {
+          findByCode("nie istnieje") >> Optional.empty()
+        }
+
+        dictionaryMapperMock = Mock(DictionaryMapper)
+        dictionaryItemMapperMock = Mock(DictionaryItemMapper)
+        dictionaryValidatorMock = Mock(DictionaryValidator)
+
+        dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
+        dictionaryItemMapperMock, dictionaryValidatorMock)
     }
-  
-  def "updateDefaultValue should not throw any exception"() {
-      when:
-          dictionaryServiceImpl.updateDefaultValue("code", "default")
-      then:
-          1 * dictionaryMapper.toDictionaryViewDto(_)
-  }
+
+    def "addDictionaryItem should throw exception if dictionary with given code not exist"() {
+        when:
+            dictionaryService.addDictionaryItem("nie istnieje", new DictionaryItemNewDto())
+        then:
+            def exception = thrown(DictionaryNotFoundException)
+            exception.eid.id == "20170201:151458"
+    }
+
+    def "addDictionaryItem should add new dictionary item"() {
+        given:
+            com.tolean.elab.persistence.dictionary.Dictionary dictionary = com.tolean.elab.persistence.dictionary.Dictionary.builder()
+                .dictionaryItems([DictionaryItem.builder().name("item1").build()])
+                .build()
+
+            dictionaryRepositoryMock = Mock(DictionaryRepository) {
+                findByCode("nie istnieje") >> Optional.empty()
+
+              findByCode("kod") >> Optional.of(dictionary)
+            }
+
+        DictionaryItemNewDto dictionaryItemNewDto = DictionaryItemNewDto.builder().name("nowa").build()
+
+        dictionaryItemMapperMock.toDictionaryItem(dictionaryItemNewDto) >> Mock(DictionaryItem) {
+            getName() >> "nowa"
+        }
+
+        dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
+          dictionaryItemMapperMock, dictionaryValidatorMock)
+        when:
+            dictionaryService.addDictionaryItem("kod", dictionaryItemNewDto)
+        then:
+            1 * dictionaryValidatorMock.check(dictionary, dictionaryItemNewDto)
+            dictionary.dictionaryItems.name.contains("nowa")
+            1 * dictionaryRepositoryMock.save(dictionary)
+            1 * dictionaryMapperMock.toDictionaryViewDto(_)
+    }
+
 }
