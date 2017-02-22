@@ -21,7 +21,6 @@ public class DictionaryMapperTest {
   }
 
   @Test
-  @Ignore
   public void shouldMapDictionaryToDictionaryViewDto() {
     Dictionary dictionary = new Dictionary();
     dictionary.setCode("code");

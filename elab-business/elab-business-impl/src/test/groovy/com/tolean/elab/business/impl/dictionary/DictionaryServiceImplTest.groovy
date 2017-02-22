@@ -21,7 +21,7 @@ class DictionaryServiceImplTest extends Specification {
   
     def setup() {
         dictionaryRepositoryMock = Mock(DictionaryRepository) {
-          findByCode("nie istnieje") >> Optional.empty()
+            findByCode("nie istnieje") >> Optional.empty()
         }
 
         dictionaryMapperMock = Mock(DictionaryMapper)
@@ -49,17 +49,17 @@ class DictionaryServiceImplTest extends Specification {
             dictionaryRepositoryMock = Mock(DictionaryRepository) {
                 findByCode("nie istnieje") >> Optional.empty()
 
-              findByCode("kod") >> Optional.of(dictionary)
+                findByCode("kod") >> Optional.of(dictionary)
             }
 
-        DictionaryItemNewDto dictionaryItemNewDto = DictionaryItemNewDto.builder().name("nowa").build()
+            DictionaryItemNewDto dictionaryItemNewDto = DictionaryItemNewDto.builder().name("nowa").build()
 
-        dictionaryItemMapperMock.toDictionaryItem(dictionaryItemNewDto) >> Mock(DictionaryItem) {
-            getName() >> "nowa"
-        }
+            dictionaryItemMapperMock.toDictionaryItem(dictionaryItemNewDto) >> Mock(DictionaryItem) {
+                getName() >> "nowa"
+            }
 
-        dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
-          dictionaryItemMapperMock, dictionaryValidatorMock)
+            dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
+                dictionaryItemMapperMock, dictionaryValidatorMock)
         when:
             dictionaryService.addDictionaryItem("kod", dictionaryItemNewDto)
         then:

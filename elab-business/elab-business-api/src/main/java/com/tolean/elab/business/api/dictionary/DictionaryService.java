@@ -2,6 +2,7 @@ package com.tolean.elab.business.api.dictionary;
 
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
 import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
+import com.tolean.elab.dto.dictionary.DictionaryUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 
 /**
@@ -15,6 +16,6 @@ public interface DictionaryService {
 
   DictionaryViewDto updateDictionaryItem(String code, DictionaryItemUpdateDto dictionaryItemUpdateDto);
 
-  DictionaryViewDto updateDefaultValue(String code, String defaultValue);
+  DictionaryViewDto updateDefaultValue(String code, DictionaryUpdateDto dictionaryUpdateDto);
 
 }
