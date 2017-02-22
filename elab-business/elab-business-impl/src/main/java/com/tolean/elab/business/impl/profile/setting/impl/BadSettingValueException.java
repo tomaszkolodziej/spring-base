@@ -1,4 +1,4 @@
-package com.tolean.elab.business.impl.profile.settings.impl;
+package com.tolean.elab.business.impl.profile.setting.impl;
 
 import pl.wavesoftware.eid.exceptions.EidIllegalArgumentException;
 

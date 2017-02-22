@@ -45,7 +45,7 @@ export class MyProfileComponent {
   }
 
   loadSettings() {
-    console.log("Loading settings...");
+    console.log("Loading setting...");
 
   }
 

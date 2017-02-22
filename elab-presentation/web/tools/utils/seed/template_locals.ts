@@ -18,7 +18,7 @@ const getConfig = (path: string, env: string): any => {
 };
 
 /**
- * Returns the project settings (consisting of the base settings provided by seed.config.ts and the additional
+ * Returns the project setting (consisting of the base setting provided by seed.config.ts and the additional
  * project specific overrides as defined in project.config.ts)
  */
 export function templateLocals() {
@@ -28,7 +28,7 @@ export function templateLocals() {
   const config = getConfig(configPath, configEnvName);
 
   if (!config) {
-    throw new Error('Invalid settings name');
+    throw new Error('Invalid setting name');
   }
 
   return Object.assign(Config, {

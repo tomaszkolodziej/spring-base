@@ -1,4 +1,4 @@
-package com.tolean.elab.business.impl.profile.settings;
+package com.tolean.elab.business.impl.profile.setting;
 
 import com.tolean.elab.mapper.profile.settings.SettingMapper;
 import com.tolean.elab.persistence.profile.Profile;

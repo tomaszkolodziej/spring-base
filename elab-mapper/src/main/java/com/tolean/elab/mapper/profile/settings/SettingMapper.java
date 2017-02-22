@@ -1,6 +1,6 @@
 package com.tolean.elab.mapper.profile.settings;
 
-import com.tolean.elab.dto.profile.settings.SettingViewDto;
+import com.tolean.elab.dto.profile.setting.SettingViewDto;
 import com.tolean.elab.persistence.profile.setting.Setting;
 import org.springframework.stereotype.Component;
 

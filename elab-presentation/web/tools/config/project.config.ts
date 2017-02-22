@@ -4,7 +4,7 @@ import { SeedConfig } from './seed.config';
 // import { ExtendPackages } from './seed.config.interfaces';
 
 /**
- * This class extends the basic seed settings, allowing for project specific overrides. A few examples can be found
+ * This class extends the basic seed setting, allowing for project specific overrides. A few examples can be found
  * below.
  */
 export class ProjectConfig extends SeedConfig {

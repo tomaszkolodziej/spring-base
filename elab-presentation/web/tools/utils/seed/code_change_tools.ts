@@ -32,7 +32,7 @@ class ChangeFileManager {
 export let changeFileManager = new ChangeFileManager();
 
 /**
- * Initialises BrowserSync with the settings defined in seed.config.ts (or if overriden: project.config.ts).
+ * Initialises BrowserSync with the setting defined in seed.config.ts (or if overriden: project.config.ts).
  */
 let runServer = () => {
   browserSync.init(Config.getPluginConfig('browser-sync'));

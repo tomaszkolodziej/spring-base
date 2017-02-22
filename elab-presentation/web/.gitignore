@@ -35,7 +35,7 @@ ts-node
 .tsdrc
 .typingsrc
 
-#IDE settings files
+#IDE setting files
 .idea
 *.iml
 
