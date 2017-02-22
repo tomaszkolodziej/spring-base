@@ -1,7 +1,7 @@
 // rxjs
-import 'rxjs/addDictionaryItem/observable/throw';
-import 'rxjs/addDictionaryItem/operator/map';
-import 'rxjs/addDictionaryItem/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 // ngrx
-//import '@ngrx/core/addDictionaryItem/operator/select';
+//import '@ngrx/core/add/operator/select';

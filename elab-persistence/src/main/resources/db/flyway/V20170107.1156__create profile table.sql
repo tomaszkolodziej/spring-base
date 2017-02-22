@@ -16,4 +16,4 @@ create table profile (
 );
 
 insert into profile(id, create_date, create_by, login, password, name, email, active)
-values(1, now(), 1, 'serwis', 'serwis', 'serwis', 'tomasz.kolodziej@poczta.pl', true);
+values(1, now(), 1, 'serwis', '$2a$10$3Yz0RsA/X2DsaTjUqTX7l.FKUlU9xo13sZqGDBKS7p5Aex.GvrMDi', 'serwis', 'tomasz.kolodziej@poczta.pl', true);

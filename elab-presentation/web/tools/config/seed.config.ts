@@ -337,8 +337,8 @@ export class SeedConfig {
         'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
 
-      'ng-semantic': 'node_modules/ng-semantic/ng-semantic.js',
       'ng2-toasty': 'node_modules/ng2-toasty/index.js',
+      'primeng': 'node_modules/primeng/index.js',
 
       'app/*': '/app/*',
       // For test config

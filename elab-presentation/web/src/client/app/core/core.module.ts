@@ -9,7 +9,6 @@ import { ContactComponent } from './index';
 import { AboutUsComponent } from './index';
 import { DashboardComponent } from './index';
 import { MyProfileComponent } from './index';
-import { TestComponent } from './index';
 
 import { NameListService } from '../shared/name-list/index';
 import { AuthenticationService } from './index';
@@ -24,13 +23,11 @@ import { ProfileService } from './index';
   imports: [CommonModule, SharedModule],
   declarations: [
     IndexComponent, LoginComponent, NoAccountYetComponent, PasswordReminderComponent,
-    ContactComponent, AboutUsComponent, DashboardComponent, MyProfileComponent,
-    TestComponent
+    ContactComponent, AboutUsComponent, DashboardComponent, MyProfileComponent
   ],
   exports: [
     IndexComponent, LoginComponent, NoAccountYetComponent, PasswordReminderComponent,
-    ContactComponent, AboutUsComponent, DashboardComponent, MyProfileComponent,
-    TestComponent
+    ContactComponent, AboutUsComponent, DashboardComponent, MyProfileComponent
   ],
   providers: [
     NameListService, AuthenticationService, HttpClient, LogService, MsgService,

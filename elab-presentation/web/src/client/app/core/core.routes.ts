@@ -8,7 +8,6 @@ import { ContactComponent } from './index';
 import { AboutUsComponent } from './index';
 import { DashboardComponent } from './index';
 import { MyProfileComponent } from './index';
-import { TestComponent } from './index';
 
 export const CoreRoutes: Route[] = [
   {
@@ -44,9 +43,5 @@ export const CoreRoutes: Route[] = [
     path: 'my-profile',
     component: MyProfileComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'test',
-    component: TestComponent
   }
 ];

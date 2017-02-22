@@ -6,7 +6,6 @@ export * from './contact/contact.component';
 export * from './about-us/about-us.component';
 export * from './dashboard/dashboard.component';
 export * from './my-profile/my-profile.component';
-export * from './test/test.component';
 
 export * from './service/index';
 export * from './model/index';

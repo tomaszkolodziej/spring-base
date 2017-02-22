@@ -44,26 +44,26 @@ public class AuthenticationRestController {
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest, Device device) {
         try {
-          Authentication authentication = this.authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-              authenticationRequest.getUsername(),
-              authenticationRequest.getPassword()
-            )
-          );
+            Authentication authentication = this.authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword()
+                    )
+            );
 
-          SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-          // Reload password post-authentication so we can generate token
-          final UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-          final String token = this.tokenUtils.generateToken(userDetails, device);
+            // Reload password post-authentication so we can generate token
+            final UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+            final String token = this.tokenUtils.generateToken(userDetails, device);
 
-          // Return the token
-          return ResponseEntity.ok(new AuthenticationResponse(userDetails.getUsername(), token));
-        } catch(AuthenticationException e) {
-          new EidRuntimeException("20161107:1745", "Błędny login lub hasło");
+            // Return the token
+            return ResponseEntity.ok(new AuthenticationResponse(userDetails.getUsername(), token));
+        } catch (AuthenticationException e) {
+            new EidRuntimeException("20161107:1745", "Błędny login lub hasło");
         }
 
-      return null;
+        return null;
     }
 
     @RequestMapping(value = "${app.route.authentication.refresh}", method = RequestMethod.GET)

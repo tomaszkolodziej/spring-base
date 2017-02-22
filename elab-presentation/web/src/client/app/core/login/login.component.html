@@ -1,47 +1,49 @@
-<sm-segment class="raised">
+<p-panel>
 
-  <h2>zaloguj się</h2>
-  <h4>wpisz login i hasło aby się zalogować</h4>
+    <h2>zaloguj się</h2>
+    <h4>wpisz login i hasło aby się zalogować</h4>
 
-  <br><br>
+    <br><br>
 
-  <a (click)="noAccountYet()">nie masz konta?</a>
+    <a (click)="noAccountYet()">nie masz konta?</a>
 
-  <br><br><br>
+    <br><br><br>
 
-  <form (ngSubmit)="login()" #loginForm="ngForm">
-    <table class="app-table">
-      <tr>
-        <td align="right">
-          <tla-form-label label="login lub e-mail"></tla-form-label>
-        </td>
-        <td>
-          <sm-input class="left" [(model)]="user.username"></sm-input>
-        </td>
-      </tr>
-      <tr>
-        <td align="right">
-          <tla-form-label label="hasło"></tla-form-label>
-        </td>
-        <td>
-          <sm-input type="password" class="left" [(model)]="user.password"></sm-input>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">&nbsp;</td>
-      </tr>
-      <tr>
-        <td colspan="2" align="right">
-          <a (click)="passwordReminder()">nie pamiętasz hasła?</a>
-        </td>
-      </tr>
-      <tr><td colspan="2">&nbsp;</td></tr>
-      <tr>
-        <td colspan="2" align="right">
-          <sm-button class="primary" (click)="login()" [disabled]="loading">zaloguj się</sm-button>
-        </td>
-      </tr>
-    </table>
-  </form>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+        <table class="app-table">
+            <tr>
+                <td align="right">
+                    <tla-form-label label="login lub e-mail"></tla-form-label>
+                </td>
+                <td>
+                    <input pInputText type="text" size="50" [(ngModel)]="user.username" name="username"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <tla-form-label label="hasło"></tla-form-label>
+                </td>
+                <td>
+                    <input pPassword type="password" size="50" [(ngModel)]="user.password" name="password"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <a (click)="passwordReminder()">nie pamiętasz hasła?</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <button pButton type="text" label="zaloguj się" (click)="login()" [disabled]="loading"></button>
+                </td>
+            </tr>
+        </table>
+    </form>
 
-</sm-segment>
+</p-panel>
