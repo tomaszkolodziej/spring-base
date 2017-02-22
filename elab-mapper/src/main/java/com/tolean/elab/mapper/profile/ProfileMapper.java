@@ -4,7 +4,7 @@ import com.tolean.elab.dto.profile.ProfileLightViewDto;
 import com.tolean.elab.dto.profile.ProfileNewDto;
 import com.tolean.elab.dto.profile.ProfileUpdateDto;
 import com.tolean.elab.dto.profile.ProfileViewDto;
-import com.tolean.elab.mapper.profile.settings.SettingMapper;
+import com.tolean.elab.mapper.profile.setting.SettingMapper;
 import com.tolean.elab.persistence.profile.Profile;
 import com.tolean.elab.persistence.profile.setting.Setting;
 import com.tolean.elab.persistence.profile.setting.SettingRepository;

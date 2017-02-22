@@ -5,7 +5,7 @@ import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction;
 import com.tolean.elab.business.impl.profile.setting.SettingService;
 import com.tolean.elab.dto.profile.*;
 import com.tolean.elab.mapper.profile.ProfileMapper;
-import com.tolean.elab.mapper.profile.settings.SettingMapper;
+import com.tolean.elab.mapper.profile.setting.SettingMapper;
 import com.tolean.elab.persistence.profile.Profile;
 import com.tolean.elab.persistence.profile.ProfileDetail;
 import com.tolean.elab.persistence.profile.ProfileRepository;

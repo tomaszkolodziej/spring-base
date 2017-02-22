@@ -1,4 +1,4 @@
-package com.tolean.elab.mapper.profile.settings;
+package com.tolean.elab.mapper.profile.setting;
 
 import com.tolean.elab.dto.profile.setting.SettingViewDto;
 import com.tolean.elab.persistence.profile.setting.Setting;
