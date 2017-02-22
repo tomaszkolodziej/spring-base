@@ -1,4 +1,4 @@
-package com.tolean.elab.business.impl.profile.settings.impl;
+package com.tolean.elab.business.impl.profile.setting.impl;
 
 import com.google.common.collect.Sets;
 import com.tolean.elab.persistence.profile.setting.value.SelectableSettingValue;

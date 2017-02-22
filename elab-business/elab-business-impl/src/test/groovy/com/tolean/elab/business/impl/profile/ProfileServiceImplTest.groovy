@@ -2,7 +2,7 @@ package com.tolean.elab.business.impl.profile
 
 import com.tolean.elab.business.api.profile.ProfileService
 import com.tolean.elab.business.impl.profile.action.ProfileChangePasswordAction
-import com.tolean.elab.business.impl.profile.settings.SettingService
+import com.tolean.elab.business.impl.profile.setting.SettingService
 import com.tolean.elab.dto.profile.PasswordNewDto
 import com.tolean.elab.mapper.profile.ProfileMapper
 import com.tolean.elab.mapper.profile.settings.SettingMapper

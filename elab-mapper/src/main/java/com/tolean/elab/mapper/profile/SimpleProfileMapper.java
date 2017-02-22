@@ -15,7 +15,7 @@ import org.mapstruct.MappingTarget;
 @Mapper
 public interface SimpleProfileMapper {
 
-    @Mapping(target = "settings", ignore = true)
+    @Mapping(target = "setting", ignore = true)
     ProfileViewDto toProfileViewDto(Profile profile);
 
     ProfileLightViewDto toProfileLightViewDto(Profile profile);

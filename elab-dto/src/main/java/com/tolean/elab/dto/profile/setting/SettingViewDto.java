@@ -1,4 +1,4 @@
-package com.tolean.elab.dto.profile.settings;
+package com.tolean.elab.dto.profile.setting;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
