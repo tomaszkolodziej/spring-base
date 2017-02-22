@@ -1,4 +1,4 @@
-<sm-segment class="raised">
+<p-panel>
   <form (ngSubmit)="saveProfile()" #myProfileForm="ngForm">
     <h2>profil</h2>
 
@@ -7,7 +7,7 @@
         <tla-form-label label="login"></tla-form-label>
       </div>
       <div class="form-row-control">
-        <sm-input [(model)]="profile.login" disabled></sm-input>
+        <!--<sm-input [(model)]="profile.login" disabled></sm-input>-->
       </div>
     </div>
     <div class="form-row">
@@ -15,7 +15,7 @@
         <tla-form-label label="imię"></tla-form-label>
       </div>
       <div class="form-row-control">
-        <sm-input [(model)]="profile.firstName"></sm-input>{{profile.firstName}}
+        <!--<sm-input [(model)]="profile.firstName"></sm-input>{{profile.firstName}}-->
       </div>
     </div>
     <div class="form-row">
@@ -35,25 +35,25 @@
       </div>
     </div>
 
-    <sm-button class="primary" (click)="saveProfile()" [disabled]="loading">zapisz</sm-button>
+    <!--<sm-button class="primary" (click)="saveProfile()" [disabled]="loading">zapisz</sm-button>-->
   </form>
-</sm-segment>
+</p-panel>
 
-<sm-segment class="raised" hidden>
+<p-panel hidden>
   <form (ngSubmit)="saveSettings()" #myProfileSettingsForm="ngForm">
     ustawienia
 
 
-    <sm-button class="primary" (click)="saveSettings()" [disabled]="loading">zapisz</sm-button>
-    <sm-button (click)="restoreDefaultSettings()" [disabled]="loading">przywróć domyślne</sm-button>
+    <!--<sm-button class="primary" (click)="saveSettings()" [disabled]="loading">zapisz</sm-button>-->
+    <!--<sm-button (click)="restoreDefaultSettings()" [disabled]="loading">przywróć domyślne</sm-button>-->
   </form>
-</sm-segment>
+</p-panel>
 
-<sm-segment class="raised" hidden>
+<p-panel hidden>
   <form (ngSubmit)="savePassword()" #myProfilePasswordForm="ngForm">
     zmiana hasła
 
 
-    <sm-button class="primary" (click)="savePassword()" [disabled]="loading">zapisz</sm-button>
+    <!--<sm-button class="primary" (click)="savePassword()" [disabled]="loading">zapisz</sm-button>-->
   </form>
-</sm-segment>
+</p-panel>
