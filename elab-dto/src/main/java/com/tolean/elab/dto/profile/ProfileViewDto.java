@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.Set;
+
+import java.util.Map;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl
@@ -16,6 +17,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class ProfileViewDto extends AbstractProfileViewDto {
 
-    private Set<SettingViewDto> settings;
+    private Map<String, SettingViewDto> settings;
 
 }

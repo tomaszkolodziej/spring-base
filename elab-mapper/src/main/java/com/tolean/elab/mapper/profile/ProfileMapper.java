@@ -25,7 +25,8 @@ public class ProfileMapper {
     private final SettingMapper settingMapper;
 
     @Autowired
-    public ProfileMapper(SettingRepository settingRepository, SimpleProfileMapper simpleProfileMapper, SettingMapper settingMapper) {
+    public ProfileMapper(SettingRepository settingRepository, SimpleProfileMapper simpleProfileMapper,
+                         SettingMapper settingMapper) {
         this.settingRepository = settingRepository;
         this.simpleProfileMapper = simpleProfileMapper;
         this.settingMapper = settingMapper;
@@ -35,7 +36,7 @@ public class ProfileMapper {
         ProfileViewDto profileViewDto = simpleProfileMapper.toProfileViewDto(profile);
 
         Set<Setting> settings = settingRepository.findAll(profile.getId());
-        profileViewDto.setSettings(settingMapper.toSettingViewDtos(settings));
+        profileViewDto.setSettings(settingMapper.toSettingViewDtoMap(settings));
 
         return profileViewDto;
     }
