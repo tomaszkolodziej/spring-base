@@ -19,12 +19,8 @@ public class Setting<V> {
 
     @Id
     private String id;
-
     private Long profileId;
     private SettingType type;
-    private String name;
-    private String description;
-    private Group group;
-    private V settingValue;
+    private Parameter<V> parameter;
 
 }

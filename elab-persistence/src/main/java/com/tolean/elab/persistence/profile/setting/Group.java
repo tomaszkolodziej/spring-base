@@ -14,7 +14,11 @@ public class Group {
 
     private String name;
 
-    public static Group getDefault() {
+    public static Group dateAndTimeGroup() {
+        return new Group("Data i czas");
+    }
+
+    public static Group otherGroup() {
         return new Group("Inne");
     }
 

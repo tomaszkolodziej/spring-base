@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
  * Created by Tomasz Kołodziej
  */
@@ -14,10 +16,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SettingViewDto {
 
-    private String type;
     private String name;
     private String description;
     private String groupName;
-    private Object settingValue;
+    private Object value;
+    private Set<String> availableValues;
 
 }
