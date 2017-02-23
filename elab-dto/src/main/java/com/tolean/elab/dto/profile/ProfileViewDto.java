@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.Set;
 
 /**
@@ -15,15 +14,8 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileViewDto {
+public class ProfileViewDto extends AbstractProfileViewDto {
 
-    private Long id;
-    private String login;
-    private String name;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private boolean active;
     private Set<SettingViewDto> settings;
 
 }

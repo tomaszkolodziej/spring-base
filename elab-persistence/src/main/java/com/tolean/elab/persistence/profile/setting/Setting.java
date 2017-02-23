@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by Tomasz Kołodziej
  */
-@Document(collection = "setting")
+@Document(collection = "settings")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
