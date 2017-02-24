@@ -38,6 +38,12 @@
         <junit.version>4.12</junit.version>
     </properties>
 
+    <scm>
+        <url>https://github.com/tomaszkolodziej/spring-base</url>
+        <connection>scm:git:git://github.com/tomaszkolodziej/spring-base.git</connection>
+        <developerConnection>scm:git:git@github.com:tomaszkolodziej/spring-base.git</developerConnection>
+    </scm>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -172,6 +178,12 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 
     <repositories>
