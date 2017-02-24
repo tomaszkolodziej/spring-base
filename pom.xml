@@ -37,11 +37,6 @@
         <junit.version>4.12</junit.version>
     </properties>
 
-    <scm>
-        <developerConnection>scm:git:git@github.com:tomaszkolodziej/spring-base.git</developerConnection>
-      <tag>0.0.1</tag>
-  </scm>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
