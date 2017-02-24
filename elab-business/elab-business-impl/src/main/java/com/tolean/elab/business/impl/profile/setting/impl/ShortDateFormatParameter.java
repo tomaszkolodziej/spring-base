@@ -35,6 +35,11 @@ public class ShortDateFormatParameter implements Parameter<String> {
     }
 
     @Override
+    public int getOrder() {
+        return 90;
+    }
+
+    @Override
     public String getDefaultValue() {
         return "dd-MM-yyyy";
     }

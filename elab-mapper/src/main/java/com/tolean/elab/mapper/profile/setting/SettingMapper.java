@@ -39,7 +39,9 @@ public class SettingMapper {
         return SettingViewDto.builder()
                 .name(parameter.getName())
                 .description(parameter.getDescription())
+                .order(parameter.getOrder())
                 .groupName(parameter.getGroup().getName())
+                .groupOrder(parameter.getGroup().getOrder())
                 .value(parameter.getValue())
                 .availableValues(parameter.getAvailableValues())
                 .build();
