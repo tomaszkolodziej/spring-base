@@ -13,6 +13,8 @@ public interface Parameter<V> {
 
     String getDescription();
 
+    int getOrder();
+
     V getValue();
 
     V getDefaultValue();

@@ -35,6 +35,11 @@ public class LongDateFormatParameter implements Parameter<String> {
     }
 
     @Override
+    public int getOrder() {
+        return 100;
+    }
+
+    @Override
     public String getDefaultValue() {
         return "dd-MM-yyyy HH:mm";
     }
