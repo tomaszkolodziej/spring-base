@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tolean</groupId>
@@ -37,12 +36,6 @@
         <nodep.version>3.1</nodep.version>
         <junit.version>4.12</junit.version>
     </properties>
-
-    <scm>
-        <url>https://github.com/tomaszkolodziej/spring-base</url>
-        <connection>scm:git:git://github.com/tomaszkolodziej/spring-base.git</connection>
-        <developerConnection>scm:git:git@github.com:tomaszkolodziej/spring-base.git</developerConnection>
-    </scm>
 
     <dependencyManagement>
         <dependencies>
