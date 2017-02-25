@@ -1,5 +1,7 @@
 package com.tolean.elab.presentation.rest;
 
+import com.tolean.elab.business.api.profile.ProfileService;
+import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.presentation.security.AuthenticationRequest;
 import com.tolean.elab.presentation.security.AuthenticationResponse;
 import com.tolean.elab.presentation.security.TokenUtils;
@@ -41,6 +43,9 @@ public class AuthenticationRestController {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private ProfileService profileService;
+
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest, Device device) {
         try {
@@ -57,8 +62,10 @@ public class AuthenticationRestController {
             final UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
             final String token = this.tokenUtils.generateToken(userDetails, device);
 
+            ProfileViewDto profileViewDto = profileService.getProfile(userDetails.getUsername());
+
             // Return the token
-            return ResponseEntity.ok(new AuthenticationResponse(userDetails.getUsername(), token));
+            return ResponseEntity.ok(new AuthenticationResponse(profileViewDto, token));
         } catch (AuthenticationException e) {
             new EidRuntimeException("20161107:1745", "Błędny login lub hasło");
         }

@@ -1,12 +1,20 @@
+<!--<p-menubar [model]="menuItems"></p-menubar>-->
+
 <nav>
-  <div style="float: left">
-    <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" [hidden]="isLoggedIn()">strona główna</a>
-    <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" [hidden]="!isLoggedIn()">strona główna</a>
-    <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">o nas (other module)</a>
-  </div>
-  <div style="float: right">
-    <a [routerLink]="['/my-profile']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" [hidden]="!isLoggedIn()">mój profil</a>
-    <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" [hidden]="isLoggedIn()">zaloguj</a>
-    <a (click)="logout()" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" [hidden]="!isLoggedIn()">wyloguj</a>
-  </div>
+    <div style="float: left">
+        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"
+           [hidden]="isLoggedIn()">strona główna</a>
+        <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}" [hidden]="!isLoggedIn()">strona główna</a>
+        <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}">o nas (other module)</a>
+    </div>
+    <div style="float: right">
+        <a [routerLink]="['/my-profile']" [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}" [hidden]="!isLoggedIn()">mój profil</a>
+        <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}" [hidden]="isLoggedIn()">zaloguj</a>
+        <a (click)="logout()" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"
+           [hidden]="!isLoggedIn()">wyloguj</a>
+    </div>
 </nav>

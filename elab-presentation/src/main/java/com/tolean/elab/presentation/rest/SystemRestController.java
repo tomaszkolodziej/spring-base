@@ -17,7 +17,7 @@ public class SystemRestController {
 
     private final SystemInfoViewDto systemInfoViewDto;
 
-    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public SystemInfoViewDto getInfo() {
         return systemInfoViewDto;
     }

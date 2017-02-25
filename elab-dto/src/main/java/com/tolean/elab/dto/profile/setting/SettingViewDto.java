@@ -18,10 +18,9 @@ public class SettingViewDto {
 
     private String name;
     private String description;
-    private int order;
     private String groupName;
-    private int groupOrder;
     private Object value;
     private Set<String> availableValues;
+    private String accessType;
 
 }

@@ -24,6 +24,8 @@ servlet.container.maxThreads: 500
 security.basic.enabled: false
 
 app:
+    name: ${project.name}
+    version: ${project.version}
     token:
         header: X-Auth-Token
         secret: verySecretP@ssw0rd!!
@@ -32,8 +34,3 @@ app:
 
 flyway:
   locations: db/flyway
-
-elab:
-    name: ${project.name}
-    version: ${project.version}
-

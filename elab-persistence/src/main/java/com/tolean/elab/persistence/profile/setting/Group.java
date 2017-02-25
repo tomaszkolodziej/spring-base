@@ -13,14 +13,13 @@ import lombok.NoArgsConstructor;
 public class Group {
 
     private String name;
-    private int order;
 
     public static Group dateAndTimeGroup() {
-        return new Group("Data i czas", 100);
+        return new Group("Data i czas");
     }
 
     public static Group otherGroup() {
-        return new Group("Inne", 1000);
+        return new Group("Inne");
     }
 
 }

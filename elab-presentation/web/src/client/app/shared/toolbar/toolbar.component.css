@@ -1,32 +1,36 @@
 :host {
-  background-color: #303f9f;
-  color: white;
-  display: block;
-  height: 48px;
-  padding: 0 16px;
+    background-color: #303f9f;
+    color: white;
+    display: block;
+    height: 48px;
+    padding: 0 16px;
 }
 
 h1 {
-  display: inline;
-  font-size: 20px;
-  font-weight: normal;
-  letter-spacing: 0.1px;
-  line-height: 48px;
+    display: inline;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.1px;
+    line-height: 48px;
+}
+
+span.system-info-version {
+    font-size: 10px;
 }
 
 .logged-as {
-  float: right;
+    float: right;
 }
 
 .logged-as-image {
-  background: url("./assets/img/profile.png");
-  float: right;
-  height: 45px;
-  margin-top: 1px;
-  margin-right: 10px;
-  width: 45px;
+    background: url("./assets/img/profile.png");
+    float: right;
+    height: 45px;
+    margin-top: 1px;
+    margin-right: 10px;
+    width: 45px;
 }
 
 .logged-as-text {
-  font-size: x-small;
+    font-size: x-small;
 }

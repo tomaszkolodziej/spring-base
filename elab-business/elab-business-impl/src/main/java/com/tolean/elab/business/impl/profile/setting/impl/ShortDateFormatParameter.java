@@ -3,6 +3,7 @@ package com.tolean.elab.business.impl.profile.setting.impl;
 import com.google.common.collect.Sets;
 import com.tolean.elab.persistence.profile.setting.Group;
 import com.tolean.elab.persistence.profile.setting.Parameter;
+import com.tolean.elab.persistence.profile.setting.SettingAccessType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,11 +36,6 @@ public class ShortDateFormatParameter implements Parameter<String> {
     }
 
     @Override
-    public int getOrder() {
-        return 90;
-    }
-
-    @Override
     public String getDefaultValue() {
         return "dd-MM-yyyy";
     }
@@ -54,6 +50,11 @@ public class ShortDateFormatParameter implements Parameter<String> {
         if (!getAvailableValues().contains(value)) {
             throw new BadSettingValueException("20170221:212100");
         }
+    }
+
+    @Override
+    public SettingAccessType getAccessType() {
+        return SettingAccessType.ONLY_SERVICE;
     }
 
 }
