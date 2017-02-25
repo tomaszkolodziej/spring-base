@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import {AuthenticationService} from './authentication.service';
+import {Injectable} from '@angular/core';
+import {Http, Headers } from '@angular/http';
+import {SessionService} from './session.service';
 
 @Injectable()
 export class HttpClient {
 
   constructor(private http: Http,
-              private authService: AuthenticationService) {
+              private sessionService: SessionService) {
 
   }
 
@@ -17,7 +17,7 @@ export class HttpClient {
   post(url: string, data?: any) {
     //var headers = new Headers();
     //headers.append("Content-Type", "application/json");
-    //headers.append("X-Auth-Token", this.getUserToken());
+    //headers.append("X-Auth-Token", this.sessionService.getProfileToken());
 
     //if (data) {
     //  return this.http.post(this.getFullUrl(url), JSON.stringify(data), { headers: headers });
@@ -28,10 +28,6 @@ export class HttpClient {
 
   private getFullUrl(url: string): string {
     return 'http://localhost:8090/elab/api' + url;
-  }
-
-  private getUserToken(): string {
-    return this.authService.getUser().token;
   }
 
 }

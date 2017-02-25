@@ -13,8 +13,6 @@ public interface Parameter<V> {
 
     String getDescription();
 
-    int getOrder();
-
     V getValue();
 
     V getDefaultValue();
@@ -22,5 +20,7 @@ public interface Parameter<V> {
     Set<String> getAvailableValues();
 
     void checkValue();
+
+    SettingAccessType getAccessType();
 
 }

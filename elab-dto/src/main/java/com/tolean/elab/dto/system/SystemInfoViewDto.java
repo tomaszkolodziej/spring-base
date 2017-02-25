@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class SystemInfoViewDto {
 
-    @Value("${elab.name}")
+    @Value("${app.name}")
     private String name;
 
-    @Value("${elab.version}")
+    @Value("${app.version}")
     private String version;
 
 }

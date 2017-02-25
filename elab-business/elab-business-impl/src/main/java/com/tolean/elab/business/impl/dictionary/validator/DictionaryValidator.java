@@ -15,20 +15,20 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Component
 public class DictionaryValidator {
 
-  public void check(Dictionary dictionary, DictionaryItemNewDto dictionaryItemNewDto) {
-    checkNotNull("20170206:1909", dictionary);
-    checkNotNull("20170206:1906", dictionaryItemNewDto);
+    public void check(Dictionary dictionary, DictionaryItemNewDto dictionaryItemNewDto) {
+        checkNotNull("20170206:190923", dictionary);
+        checkNotNull("20170206:190642", dictionaryItemNewDto);
 
-    if (StringUtils.isBlank(dictionaryItemNewDto.getName())) {
-      throw new EidIllegalArgumentException("20170213:150300", "Pole nazwa jest wymagane.");
+        if (StringUtils.isBlank(dictionaryItemNewDto.getName())) {
+            throw new EidIllegalArgumentException("20170213:150300", "Pole nazwa jest wymagane.");
+        }
+
+        boolean dictionaryItemNameAlreadyExist = dictionary.getDictionaryItems().stream()
+                .anyMatch(dictionaryItem -> dictionaryItem.getName().equalsIgnoreCase(dictionaryItemNewDto.getName()));
+
+        if (dictionaryItemNameAlreadyExist) {
+            throw new EidIllegalStateException("20170213:150400", "Pole o nazwie '" + dictionaryItemNewDto.getName() + "' już istnieje.");
+        }
     }
-
-    boolean dictionaryItemNameAlreadyExist = dictionary.getDictionaryItems().stream()
-      .anyMatch(dictionaryItem -> dictionaryItem.getName().equalsIgnoreCase(dictionaryItemNewDto.getName()));
-
-    if (dictionaryItemNameAlreadyExist) {
-      throw new EidIllegalStateException("20170213:150400", "Pole o nazwie '" + dictionaryItemNewDto.getName() + "' już istnieje.");
-    }
-  }
 
 }

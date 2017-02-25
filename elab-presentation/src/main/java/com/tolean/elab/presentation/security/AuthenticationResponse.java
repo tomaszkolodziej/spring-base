@@ -1,5 +1,6 @@
 package com.tolean.elab.presentation.security;
 
+import com.tolean.elab.dto.profile.ProfileViewDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AuthenticationResponse {
 
-    private String username;
+    private ProfileViewDto profile;
     private String token;
 
 }

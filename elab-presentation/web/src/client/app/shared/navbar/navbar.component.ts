@@ -1,34 +1,62 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../../core/service/authentication.service';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+
+import {MenuItem} from 'primeng/primeng';
+
+import {AuthenticationService} from '../../core/service/authentication.service';
+import {SessionService} from '../../core/service/session.service';
 
 /**
  * This class represents the navigation bar component.
  */
 @Component({
-  moduleId: module.id,
-  selector: 'tk-navbar',
-  templateUrl: 'navbar.component.html',
-  styleUrls: ['navbar.component.css'],
+    moduleId: module.id,
+    selector: 'tk-navbar',
+    templateUrl: 'navbar.component.html',
+    styleUrls: ['navbar.component.css'],
 })
 export class NavbarComponent {
 
-  constructor(private authService: AuthenticationService,
-              private router: Router) {
+    public menuItems: MenuItem[];
 
-  }
+    constructor(private authService: AuthenticationService,
+                private sessionService: SessionService,
+                private router: Router) {
 
-  getUsername() {
-    return this.authService.getUser().username;
-  }
+    }
 
-  isLoggedIn() {
-    return this.authService.isLoggedIn();
-  }
+    ngOnInit() {
+        this.menuItems = [
+            {
+                label: "Pomoc",
+                icon: "fa-info",
+                items: [
+                    {
+                        label: "Kontakt"
+                    }
+                ]
+            },
+            {
+                label: "Wyloguj",
+                icon: "fa-sign-out",
+                command: (event) => {
+                    this.logout();
+                }
+            }
+        ];
+    }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(["/"]);
-  }
+    getProfileName() {
+        return this.sessionService.getProfileName();
+    }
+
+    isLoggedIn() {
+        return this.sessionService.isLoggedIn();
+    }
+
+    logout() {
+        this.authService.logout();
+        this.router.navigate(["/"]);
+    }
 
 }
