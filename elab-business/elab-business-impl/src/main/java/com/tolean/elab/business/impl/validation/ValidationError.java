@@ -50,12 +50,12 @@ public class ValidationError {
     }
 
     public ValidationError fieldRequired(final String fieldName) {
-        this.fieldErrors.put(fieldName, String.format("uzupełnij"));
+        this.fieldErrors.put(fieldName, String.format("Uzupełnij"));
         return this;
     }
 
     public ValidationError fieldMaxLength(final String fieldName, final int maxLenght) {
-        this.fieldErrors.put(fieldName, String.format("maksymalna długość to %d znaków", maxLenght));
+        this.fieldErrors.put(fieldName, String.format("Maks. długość to %d znaków", maxLenght));
         return this;
     }
 
