@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SessionService} from '../../core/service/session.service';
 import {SystemInfo} from "../../core/model/system-info";
+import {SystemService} from "../../core/service/system.service";
 
 /**
  * This class represents the toolbar component.
@@ -13,14 +14,20 @@ import {SystemInfo} from "../../core/model/system-info";
 })
 export class ToolbarComponent {
 
-    public systemInfo: any = { name: "", version: ""};
+    public systemInfo: SystemInfo = null;
 
-    constructor(private sessionService: SessionService) {
-
+    constructor(private systemService: SystemService,
+                private sessionService: SessionService) {
+        this.addSystemInfoToLocalStorage();
     }
 
-    ngOnInit(): void {
-        this.setSystemInfo();
+    private addSystemInfoToLocalStorage() {
+        this.systemService.getSystemInfo().subscribe(
+            (systemInfoData: any) => {
+                this.systemInfo = systemInfoData;
+                localStorage.setItem("systemInfo", JSON.stringify(this.systemInfo));
+            }
+        );
     }
 
     isLoggedIn() {

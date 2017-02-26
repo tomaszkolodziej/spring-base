@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
         this.authService.login(this.user.username, this.user.password)
             .subscribe(
-                data => {
-                    if (data === true) {
+                isAuthenticated => {
+                    if (isAuthenticated === true) {
                         this.router.navigate(['/dashboard']);
                     } else {
                         this.loading = false;
