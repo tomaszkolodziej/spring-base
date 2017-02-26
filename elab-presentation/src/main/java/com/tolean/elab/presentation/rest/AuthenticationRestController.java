@@ -5,6 +5,7 @@ import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.presentation.security.AuthenticationRequest;
 import com.tolean.elab.presentation.security.AuthenticationResponse;
 import com.tolean.elab.presentation.security.TokenUtils;
+import com.tolean.elab.tools.AppException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import pl.wavesoftware.eid.exceptions.EidRuntimeException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,10 +67,8 @@ public class AuthenticationRestController {
             // Return the token
             return ResponseEntity.ok(new AuthenticationResponse(profileViewDto, token));
         } catch (AuthenticationException e) {
-            new EidRuntimeException("20161107:1745", "Błędny login lub hasło");
+            throw new AppException("20161107:1745", "BAD_LOGIN_OR_PASSWORD", "Błędny login lub hasło");
         }
-
-        return null;
     }
 
     @RequestMapping(value = "${app.route.authentication.refresh}", method = RequestMethod.GET)

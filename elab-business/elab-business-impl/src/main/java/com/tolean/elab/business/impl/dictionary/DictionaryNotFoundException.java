@@ -1,14 +1,14 @@
 package com.tolean.elab.business.impl.dictionary;
 
-import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
+import com.tolean.elab.tools.AppException;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl
  */
-public class DictionaryNotFoundException extends EidIllegalStateException {
+public class DictionaryNotFoundException extends AppException {
 
     public DictionaryNotFoundException(String eid, String code) {
-        super(eid, "Słownik o kodzie " + code + " nie został odnaleziony.");
+        super(eid, "DICTIONARY_NOT_FOUND", "Słownik o kodzie " + code + " nie został odnaleziony.");
     }
 
 }
