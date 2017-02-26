@@ -1,18 +1,20 @@
 package com.tolean.elab.business.impl.profile;
 
-import pl.wavesoftware.eid.exceptions.EidIllegalStateException;
+import com.tolean.elab.tools.AppException;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl
  */
-public class ProfileNotFoundException extends EidIllegalStateException {
+public class ProfileNotFoundException extends AppException{
+
+    private static final String PROFILE_NOT_FOUND = "PROFILE_NOT_FOUND";
 
     public ProfileNotFoundException(String eid, Long profileId) {
-        super(eid, "Profil o id " + profileId + " nie został odnaleziony.");
+        super(eid, PROFILE_NOT_FOUND, "Profil o id " + profileId + " nie został odnaleziony.");
     }
 
     public ProfileNotFoundException(String eid, String login) {
-        super(eid, "Profil o loginie " + login + " nie został odnaleziony.");
+        super(eid, PROFILE_NOT_FOUND, "Profil o loginie " + login + " nie został odnaleziony.");
     }
 
 }

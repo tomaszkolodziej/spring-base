@@ -1,11 +1,11 @@
 package com.tolean.elab.presentation.rest;
 
 import com.tolean.elab.dto.profile.ProfileViewDto;
+import com.tolean.elab.tools.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import pl.wavesoftware.eid.exceptions.EidRuntimeException;
 
 /**
  * Created by Tomasz Kołodziej
@@ -37,7 +37,7 @@ public class TestRestController {
     @RequestMapping(value = "/testThrowException", method = RequestMethod.GET)
     public void testThrowException() {
         log.info("testThrowException method called");
-        new EidRuntimeException("20161105:1409", "message");
+        new AppException("20161105:1409", "TEST", "message");
     }
 
 }
