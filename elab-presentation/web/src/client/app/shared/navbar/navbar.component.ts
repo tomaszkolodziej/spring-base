@@ -28,11 +28,32 @@ export class NavbarComponent {
     ngOnInit() {
         this.menuItems = [
             {
+                label: "Konfiguracja",
+                items: [
+                    {
+                        label: "Moje konto",
+                        icon: "fa-user-o",
+                        routerLink: ["/my-profile"]
+                    },
+                    {
+                        label: "Użytkownicy",
+                        routerLink: ["/profiles"]
+                    },
+                    {
+                        label: "Parametry systemu"
+                    },
+                    {
+                        label: "Słowniki"
+                    }
+                ]
+            },
+            {
                 label: "Pomoc",
                 icon: "fa-info",
                 items: [
                     {
-                        label: "Kontakt"
+                        label: "Kontakt",
+                        routerLink: ["/contact"]
                     }
                 ]
             },

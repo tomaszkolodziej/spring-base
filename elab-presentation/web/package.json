@@ -1,9 +1,8 @@
 {
-  "name": "angular-seed",
-  "version": "0.0.0",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "name": "elab",
+  "version": "0.0.1",
   "repository": {
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://github.com/tomaszkolodziej/spring-base"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -39,7 +38,7 @@
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "node_modules/.bin/compodoc -s"
   },
-  "author": "Minko Gechev <mgechev>",
+  "author": "Tomasz Kolodziej <tomasz.kolodziej@poczta.pl>",
   "license": "MIT",
   "devDependencies": {
     "@angular/compiler-cli": "~2.2.0",
@@ -124,7 +123,8 @@
     "walk": "^2.3.9",
     "yargs": "^6.0.0",
     "lodash": "^4.16.2",
-    "primeng": "2.0.1"
+    "primeng": "2.0.1",
+    "font-awesome": "4.7.0"
   },
   "dependencies": {
     "@angular/common": "~2.2.0",

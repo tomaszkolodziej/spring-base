@@ -549,7 +549,6 @@ export class SeedConfig {
   }
 
   addPackageBundles(pack: ExtendPackages) {
-
     if (pack.path) {
       this.SYSTEM_CONFIG_DEV.paths[pack.name] = pack.path;
       this.SYSTEM_BUILDER_CONFIG.paths[pack.name] = pack.path;
@@ -562,7 +561,6 @@ export class SeedConfig {
   }
 
   addPackagesBundles(packs: ExtendPackages[]) {
-
     packs.forEach((pack: ExtendPackages) => {
       this.addPackageBundles(pack);
     });

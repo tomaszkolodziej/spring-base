@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SessionService} from "../../core/service/session.service";
 
 @Component({
   moduleId: module.id,
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['footerlinks.component.css']
 })
 export class FooterLinksComponent {
+
+    constructor(private sessionService: SessionService) {
+
+    }
+
+
 
 }

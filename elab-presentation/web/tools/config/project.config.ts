@@ -11,6 +11,10 @@ export class ProjectConfig extends SeedConfig {
 
     PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
+    NODE_MODULES = 'node_modules';
+
+    PRIME_NG_THEME = 'bootstrap';
+
     constructor() {
         super();
         this.APP_TITLE = 'App';
@@ -32,6 +36,9 @@ export class ProjectConfig extends SeedConfig {
             {src: `${this.CSS_SRC}/theme.css`, inject: true, vendor: false},
             {src: `${this.CSS_SRC}/font-awesome.min.css`, inject: true, vendor: false},
             {src: `${this.CSS_SRC}/style-material.css`, inject: true, vendor: false},
+            {src: this.NODE_MODULES + `/primeng/resources/themes/` + this.PRIME_NG_THEME + `/theme.css`, inject: true, vendor: false},
+            {src: this.NODE_MODULES + `/primeng/resources/themes/` + this.PRIME_NG_THEME + `/images/**`, inject: true, vendor: false},
+            {src: this.NODE_MODULES + `/font-awesome/css/font-awesome.min.css`, inject: true, vendor: false},
             {src: `${this.APP_SRC}/libs/jquery-3.1.0.min.js`, inject: true, vendor: false}
             // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
             // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
