@@ -27,12 +27,3 @@ nav a.router-link-active {
   color: #212121;
   text-decoration: none !important;
 }
-
-.logged-as-text {
-  color: white;
-  font-size: x-small;
-}
-
-.profile {
-  color: #ff4081;
-}

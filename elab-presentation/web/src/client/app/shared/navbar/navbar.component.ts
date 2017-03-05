@@ -29,10 +29,10 @@ export class NavbarComponent {
         this.menuItems = [
             {
                 label: "Konfiguracja",
-                icon: "",
                 items: [
                     {
                         label: "Moje konto",
+                        icon: "fa-user-o",
                         routerLink: ["/my-profile"]
                     },
                     {
