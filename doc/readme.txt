@@ -14,4 +14,5 @@
 13. Skrzynka pocztowa:
 	email: tolean.contact@gmail.com
 	haslo: t0lean.c0ntact
-	
+14. Sprawdzenie jakie uslugi nasluchuja na jakim porcie w systemie Windows: netstat -ano | findstr 8080 i zamkniecie uslugi o podanym PID: taskkill /pid 21424 /F
+15. 
