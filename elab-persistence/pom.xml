@@ -10,7 +10,7 @@
     <artifactId>elab-persistence</artifactId>
 
     <properties>
-        <flyway.version>4.0.3</flyway.version>
+        <flyway.version>4.1.2</flyway.version>
         <com.querydsl.version>4.1.4</com.querydsl.version>
     </properties>
 
