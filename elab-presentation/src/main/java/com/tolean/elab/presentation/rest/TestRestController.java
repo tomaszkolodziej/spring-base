@@ -1,10 +1,14 @@
 package com.tolean.elab.presentation.rest;
 
+import com.tolean.elab.business.api.diagnosis.DiagnosisService;
 import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.tools.AppException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/test")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TestRestController {
+
+    private final DiagnosisService diagnosisService;
 
     @RequestMapping(value = "/testReturnString", method = RequestMethod.GET)
     public String testReturnString() {
@@ -37,7 +44,12 @@ public class TestRestController {
     @RequestMapping(value = "/testThrowException", method = RequestMethod.GET)
     public void testThrowException() {
         log.info("testThrowException method called");
-        new AppException("20161105:1409", "TEST", "message");
+        new AppException("20161105:140909", "TEST", "message");
+    }
+
+    @RequestMapping(value = "/testSendSms", method = RequestMethod.GET)
+    public void testSendSms(@RequestParam String mobileNo) {
+        diagnosisService.testSendSms(mobileNo);
     }
 
 }

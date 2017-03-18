@@ -31,6 +31,8 @@
         <lombok.version>1.16.12</lombok.version>
         <apache.commons.lang.version>3.5</apache.commons.lang.version>
         <apache.commons.collections.version>4.1</apache.commons.collections.version>
+        <tolean.smssender.groupId>com.github.tomaszkolodziej</tolean.smssender.groupId>
+        <tolean.smssender.version>1.2.5</tolean.smssender.version>
         <spock.version>1.0-groovy-2.4</spock.version>
         <objenesis.version>2.1</objenesis.version>
         <nodep.version>3.1</nodep.version>
@@ -100,6 +102,11 @@
                 <groupId>pl.wavesoftware</groupId>
                 <artifactId>eid-exceptions</artifactId>
                 <version>1.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>${tolean.smssender.groupId}</groupId>
+                <artifactId>smssender</artifactId>
+                <version>${tolean.smssender.version}</version>
             </dependency>
             <!-- test -->
             <dependency>
@@ -188,6 +195,10 @@
         <repository>
             <id>maven-eu.nuxeo.org</id>
             <url>https://maven-eu.nuxeo.org/nexus/content/repositories/public-releases/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
         <repository>
             <id>prime-repo</id>

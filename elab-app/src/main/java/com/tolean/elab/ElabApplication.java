@@ -2,7 +2,7 @@ package com.tolean.elab;
 
 import com.tolean.elab.persistence.ElabPersistenceConfiguration;
 import com.tolean.elab.presentation.security.WebSecurityConfiguration;
-import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import com.tolean.smssender.EnableSmsSender;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl
@@ -18,6 +18,8 @@ import org.springframework.core.io.ClassPathResource;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
+@EnableAsync
+@EnableSmsSender
 @Import({ElabPersistenceConfiguration.class, WebSecurityConfiguration.class})
 public class ElabApplication {
 
@@ -28,9 +30,6 @@ public class ElabApplication {
     @Bean
     public PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
-        YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
-        yamlPropertiesFactoryBean.setResources(new ClassPathResource("application.yml"));
-        propertySourcesPlaceholderConfigurer.setProperties(yamlPropertiesFactoryBean.getObject());
         return propertySourcesPlaceholderConfigurer;
     }
 
