@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>elab-presentation</artifactId>
+    <artifactId>presentation</artifactId>
     <packaging>jar</packaging>
 
     <properties>
@@ -17,16 +17,16 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>elab-business-api</artifactId>
+            <artifactId>business-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>elab-dto</artifactId>
+            <artifactId>dto</artifactId>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>elab-tools</artifactId>
+            <artifactId>tools</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
