@@ -1,6 +1,6 @@
 package com.tolean.elab.business.impl.dictionary;
 
-import com.tolean.elab.tools.AppException;
+import com.tolean.elab.commons.AppException;
 
 /**
  * Created by tomasz.kolodziej@poczta.pl

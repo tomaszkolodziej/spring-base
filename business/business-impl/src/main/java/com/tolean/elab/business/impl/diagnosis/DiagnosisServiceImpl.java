@@ -1,7 +1,7 @@
 package com.tolean.elab.business.impl.diagnosis;
 
 import com.tolean.elab.business.api.diagnosis.DiagnosisService;
-import com.tolean.elab.tools.ProdProfile;
+import com.tolean.elab.commons.ProdProfile;
 import com.tolean.smssender.SmsSender;
 import com.tolean.smssender.response.ResponseStatusDetail;
 import lombok.RequiredArgsConstructor;

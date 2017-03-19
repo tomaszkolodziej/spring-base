@@ -1,6 +1,6 @@
 package com.tolean.elab.presentation.error;
 
-import com.tolean.elab.tools.AppException;
+import com.tolean.elab.commons.AppException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

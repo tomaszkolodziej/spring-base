@@ -5,7 +5,7 @@ import com.tolean.elab.dto.profile.ProfileViewDto;
 import com.tolean.elab.presentation.security.AuthenticationRequest;
 import com.tolean.elab.presentation.security.AuthenticationResponse;
 import com.tolean.elab.presentation.security.TokenUtils;
-import com.tolean.elab.tools.AppException;
+import com.tolean.elab.commons.AppException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
