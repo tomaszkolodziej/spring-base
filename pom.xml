@@ -7,13 +7,13 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
+        <module>commons</module>
         <module>persistence</module>
         <module>business</module>
         <module>dto</module>
         <module>mapper</module>
         <module>presentation</module>
         <module>app</module>
-        <module>commons</module>
     </modules>
 
     <packaging>pom</packaging>
