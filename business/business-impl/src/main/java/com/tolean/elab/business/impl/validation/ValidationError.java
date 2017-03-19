@@ -1,7 +1,7 @@
 package com.tolean.elab.business.impl.validation;
 
 import com.google.common.collect.Maps;
-import com.tolean.elab.tools.AppException;
+import com.tolean.elab.commons.AppException;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.tolean.elab.tools;
+package com.tolean.elab.commons;
 
 import org.springframework.context.annotation.Profile;
 
@@ -10,9 +10,9 @@ import java.lang.annotation.Target;
 /**
  * Created by Tomasz Kołodziej
  */
-@Profile("prod")
+@Profile("dev")
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ProdProfile {
+public @interface DevProfile {
 
 }

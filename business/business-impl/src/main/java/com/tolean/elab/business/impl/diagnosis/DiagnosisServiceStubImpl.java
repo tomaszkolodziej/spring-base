@@ -1,7 +1,7 @@
 package com.tolean.elab.business.impl.diagnosis;
 
 import com.tolean.elab.business.api.diagnosis.DiagnosisService;
-import com.tolean.elab.tools.DevProfile;
+import com.tolean.elab.commons.DevProfile;
 import com.tolean.smssender.response.ResponseStatusDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class DiagnosisServiceStubImpl implements DiagnosisService {
 
     @Override
     public ResponseStatusDetail testSendSms(String mobileNo) {
-        log.debug("Wiadomosc SMS zostala wyslana na numer " + mobileNo);
+        log.info("Wiadomosc SMS zostala wyslana na numer " + mobileNo);
         return ResponseStatusDetail.ok();
     }
 

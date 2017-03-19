@@ -1,4 +1,4 @@
-package com.tolean.elab.tools;
+package com.tolean.elab.commons;
 
 import lombok.Getter;
 import pl.wavesoftware.eid.exceptions.EidRuntimeException;

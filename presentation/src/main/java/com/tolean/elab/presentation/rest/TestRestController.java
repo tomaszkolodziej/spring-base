@@ -2,7 +2,7 @@ package com.tolean.elab.presentation.rest;
 
 import com.tolean.elab.business.api.diagnosis.DiagnosisService;
 import com.tolean.elab.dto.profile.ProfileViewDto;
-import com.tolean.elab.tools.AppException;
+import com.tolean.elab.commons.AppException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
