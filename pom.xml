@@ -13,7 +13,7 @@
         <module>mapper</module>
         <module>presentation</module>
         <module>app</module>
-        <module>tools</module>
+        <module>commons</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -43,7 +43,7 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>tools</artifactId>
+                <artifactId>commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
