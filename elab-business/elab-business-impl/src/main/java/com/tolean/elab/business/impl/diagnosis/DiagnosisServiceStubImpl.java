@@ -16,7 +16,7 @@ public class DiagnosisServiceStubImpl implements DiagnosisService {
 
     @Override
     public ResponseStatusDetail testSendSms(String mobileNo) {
-        log.info("Wiadomosc SMS zostala wyslana na numer " + mobileNo);
+        log.debug("Wiadomosc SMS zostala wyslana na numer " + mobileNo);
         return ResponseStatusDetail.ok();
     }
 

@@ -5,6 +5,8 @@ node_modules
 jspm_packages
 link-checker-results.txt
 **/*npm-debug.log.*
+/log
+*.log
 web/**/.js
 *.js.map
 e2e/**/*.js
