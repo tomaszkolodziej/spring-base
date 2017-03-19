@@ -29,6 +29,7 @@ public class Dictionary {
   private String code;
   private String name;
   private String description;
+  private String defaultValue;
   private boolean active;
 
   @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})

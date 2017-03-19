@@ -3,6 +3,7 @@ package com.tolean.elab.presentation.rest;
 import com.tolean.elab.business.api.dictionary.DictionaryService;
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
 import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
+import com.tolean.elab.dto.dictionary.DictionaryUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +38,10 @@ public class DictionaryRestController {
         return dictionaryService.updateDictionaryItem(code, itemId, dictionaryItemUpdateDto);
     }
 
+    @RequestMapping(value = "/{code}/defaultValue", method = RequestMethod.PUT)
+    public DictionaryViewDto update(@PathVariable String code, @RequestBody DictionaryUpdateDto dictionaryUpdateDto) {
+        checkNotNull("20170221:1958", code);
+
+        return dictionaryService.updateDefaultValue(code, dictionaryUpdateDto);
+    }
 }
