@@ -68,6 +68,11 @@ public class DictionaryServiceImpl implements DictionaryService {
 
         DictionaryItem dictionaryItem = dictionary.getDictionaryItem(dictionaryItemId);
         dictionaryItemMapper.intoDictionaryItem(dictionaryItemUpdateDto, dictionaryItem);
+
+        if (!dictionaryItem.isActive()) {
+          dictionary.setDefaultValue(null);
+        }
+
         dictionary = dictionaryRepository.save(dictionary);
 
         return dictionaryMapper.toDictionaryViewDto(dictionary);

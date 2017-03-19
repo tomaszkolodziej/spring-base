@@ -3,7 +3,6 @@ package com.tolean.elab.business.impl.dictionary
 import com.tolean.elab.business.impl.dictionary.validator.DictionaryValidator
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto
 import com.tolean.elab.dto.dictionary.DictionaryUpdateDto
-import com.tolean.elab.dto.dictionary.DictionaryViewDto
 import com.tolean.elab.mapper.dictionary.DictionaryItemMapper
 import com.tolean.elab.mapper.dictionary.DictionaryMapper
 import com.tolean.elab.persistence.dictionary.Dictionary
@@ -45,7 +44,7 @@ class DictionaryServiceImplTest extends Specification {
 
   def "addDictionaryItem should add new dictionary item"() {
     given:
-      com.tolean.elab.persistence.dictionary.Dictionary dictionary = com.tolean.elab.persistence.dictionary.Dictionary.builder()
+      Dictionary dictionary = Dictionary.builder()
         .dictionaryItems([DictionaryItem.builder().name("item1").build()])
         .build()
 
