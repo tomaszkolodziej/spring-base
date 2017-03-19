@@ -1,4 +1,4 @@
-package com.tolean.elab.commons;
+package com.tolean.elab.commons.profile;
 
 import org.springframework.context.annotation.Profile;
 

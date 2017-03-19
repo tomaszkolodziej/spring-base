@@ -1,7 +1,7 @@
 package com.tolean.elab.business.impl.diagnosis;
 
 import com.tolean.elab.business.api.diagnosis.DiagnosisService;
-import com.tolean.elab.commons.DevProfile;
+import com.tolean.elab.commons.profile.DevProfile;
 import com.tolean.smssender.response.ResponseStatusDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
