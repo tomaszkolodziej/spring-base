@@ -70,7 +70,7 @@ class DictionaryServiceImplTest extends Specification {
       1 * dictionaryMapperMock.toDictionaryViewDto(_)
   }
 
-  def "updateDefaultValue should save dictionary"() {
+  def "update should save dictionary"() {
     given:
       String dictionaryName = "dictionaryName"
       String dictionaryItemValue = "value"
@@ -85,12 +85,12 @@ class DictionaryServiceImplTest extends Specification {
 
       dictionaryService = getDictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock, dictionaryItemMapperMock, dictionaryValidatorMock)
     when:
-      dictionaryService.updateDefaultValue(dictionaryName, new DictionaryUpdateDto(dictionaryItemValue))
+      dictionaryService.update(dictionaryName, new DictionaryUpdateDto(dictionaryItemValue))
     then:
       1 * dictionaryRepositoryMock.save(dictionary)
   }
 
-  def "updateDefaultValue should throw exception when value is not active in dictionary items"() {
+  def "update should throw exception when value is not active in dictionary items"() {
     given:
       String dictionaryName = "dictionaryName"
       String dictionaryItemValue = "value"
@@ -105,7 +105,7 @@ class DictionaryServiceImplTest extends Specification {
 
       dictionaryService = getDictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock, dictionaryItemMapperMock, dictionaryValidatorMock)
     when:
-      dictionaryService.updateDefaultValue(dictionaryName, new DictionaryUpdateDto(dictionaryItemValue))
+      dictionaryService.update(dictionaryName, new DictionaryUpdateDto(dictionaryItemValue))
     then:
       def exception = thrown(DictionaryItemNotFoundException)
       exception.eid.id == "20170221:194603"

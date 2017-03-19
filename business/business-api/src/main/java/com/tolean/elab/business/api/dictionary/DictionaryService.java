@@ -16,6 +16,6 @@ public interface DictionaryService {
 
   DictionaryViewDto updateDictionaryItem(String code, Long dictionaryItemId, DictionaryItemUpdateDto dictionaryItemUpdateDto);
 
-  DictionaryViewDto updateDefaultValue(String code, DictionaryUpdateDto dictionaryUpdateDto);
+  DictionaryViewDto update(String code, DictionaryUpdateDto dictionaryUpdateDto);
 
 }

@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
 /**
@@ -79,15 +80,17 @@ public class DictionaryServiceImpl implements DictionaryService {
     }
 
     @Override
-    public DictionaryViewDto updateDefaultValue(String code, DictionaryUpdateDto dictionaryUpdateDto) {
-        checkNotNull("20170221:1912", code);
+    public DictionaryViewDto update(String code, DictionaryUpdateDto dictionaryUpdateDto) {
+        checkNotNull(code, "20170221:1912");
+        checkNotNull(dictionaryUpdateDto, "20170319:1832");
 
         Dictionary dictionary = findByCode(code);
-        if (dictionaryUpdateDto == null) {
+        if (isBlank(dictionaryUpdateDto.getDefaultValue())) {
             dictionary.setDefaultValue(null);
         } else {
             DictionaryItem dictionaryItem = dictionary.getDictionaryItems().stream()
-                .filter(value -> value.isActive() && value.getName().equals(dictionaryUpdateDto.getDefaultValue()))
+                .filter(value -> value.isActive())
+                .filter(value -> value.getName().equals(dictionaryUpdateDto.getDefaultValue()))
                 .findFirst()
                 .orElseThrow(() -> new DictionaryItemNotFoundException("20170221:194603", dictionaryUpdateDto.getDefaultValue()));
             dictionary.setDefaultValue(dictionaryItem.getName());

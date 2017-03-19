@@ -42,6 +42,6 @@ public class DictionaryRestController {
     public DictionaryViewDto update(@PathVariable String code, @RequestBody DictionaryUpdateDto dictionaryUpdateDto) {
         checkNotNull("20170221:1958", code);
 
-        return dictionaryService.updateDefaultValue(code, dictionaryUpdateDto);
+        return dictionaryService.update(code, dictionaryUpdateDto);
     }
 }
