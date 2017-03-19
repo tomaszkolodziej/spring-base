@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>elab-tools</artifactId>
+  <artifactId>commons</artifactId>
 
   <dependencies>
     <dependency>

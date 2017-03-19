@@ -9,11 +9,11 @@
 
     <packaging>pom</packaging>
 
-    <artifactId>elab-business</artifactId>
+    <artifactId>business</artifactId>
 
     <modules>
-        <module>elab-business-api</module>
-        <module>elab-business-impl</module>
+        <module>business-api</module>
+        <module>business-impl</module>
     </modules>
 
     <dependencyManagement>

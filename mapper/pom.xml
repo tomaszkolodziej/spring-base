@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>elab-mapper</artifactId>
+    <artifactId>mapper</artifactId>
 
     <properties>
         <org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
@@ -16,12 +16,12 @@
     <dependencies>
         <dependency>
             <groupId>com.tolean</groupId>
-            <artifactId>elab-persistence</artifactId>
+            <artifactId>persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.tolean</groupId>
-            <artifactId>elab-dto</artifactId>
+            <artifactId>dto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

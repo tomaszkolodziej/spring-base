@@ -7,13 +7,13 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>elab-persistence</module>
-        <module>elab-business</module>
-        <module>elab-dto</module>
-        <module>elab-mapper</module>
-        <module>elab-presentation</module>
-        <module>elab-app</module>
-        <module>elab-tools</module>
+        <module>persistence</module>
+        <module>business</module>
+        <module>dto</module>
+        <module>mapper</module>
+        <module>presentation</module>
+        <module>app</module>
+        <module>commons</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -43,32 +43,32 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>elab-tools</artifactId>
+                <artifactId>commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>elab-business</artifactId>
+                <artifactId>business</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>elab-dto</artifactId>
+                <artifactId>dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>elab-persistence</artifactId>
+                <artifactId>persistence</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>elab-mapper</artifactId>
+                <artifactId>mapper</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>elab-presentation</artifactId>
+                <artifactId>presentation</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
