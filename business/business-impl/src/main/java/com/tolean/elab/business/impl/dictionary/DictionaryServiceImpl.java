@@ -4,6 +4,7 @@ import com.tolean.elab.business.api.dictionary.DictionaryService;
 import com.tolean.elab.business.impl.dictionary.validator.DictionaryValidator;
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto;
 import com.tolean.elab.dto.dictionary.DictionaryItemUpdateDto;
+import com.tolean.elab.dto.dictionary.DictionaryUpdateDto;
 import com.tolean.elab.dto.dictionary.DictionaryViewDto;
 import com.tolean.elab.mapper.dictionary.DictionaryItemMapper;
 import com.tolean.elab.mapper.dictionary.DictionaryMapper;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import static pl.wavesoftware.eid.utils.EidPreconditions.checkNotNull;
 
 /**
@@ -67,9 +69,37 @@ public class DictionaryServiceImpl implements DictionaryService {
 
         DictionaryItem dictionaryItem = dictionary.getDictionaryItem(dictionaryItemId);
         dictionaryItemMapper.intoDictionaryItem(dictionaryItemUpdateDto, dictionaryItem);
+
+        if (!dictionaryItem.isActive()) {
+          dictionary.setDefaultValue(null);
+        }
+
         dictionary = dictionaryRepository.save(dictionary);
 
         return dictionaryMapper.toDictionaryViewDto(dictionary);
     }
 
+    @Override
+    public DictionaryViewDto update(String code, DictionaryUpdateDto dictionaryUpdateDto) {
+        checkNotNull(code, "20170221:1912");
+        checkNotNull(dictionaryUpdateDto, "20170319:1832");
+
+        Dictionary dictionary = findByCode(code);
+        if (isBlank(dictionaryUpdateDto.getDefaultValue())) {
+            dictionary.setDefaultValue(null);
+        } else {
+            DictionaryItem dictionaryItem = dictionary.getDictionaryItems().stream()
+                .filter(value -> value.isActive())
+                .filter(value -> value.getName().equals(dictionaryUpdateDto.getDefaultValue()))
+                .findFirst()
+                .orElseThrow(() -> new DictionaryItemNotFoundException("20170221:194603", dictionaryUpdateDto.getDefaultValue()));
+            dictionary.setDefaultValue(dictionaryItem.getName());
+        }
+        dictionary = dictionaryRepository.save(dictionary);
+        return dictionaryMapper.toDictionaryViewDto(dictionary);
+    }
+
+    private Dictionary findByCode(String code) {
+        return dictionaryRepository.findByCode(code).orElseThrow(() -> new DictionaryNotFoundException("20170201:151458", code));
+    }
 }
