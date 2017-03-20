@@ -2,8 +2,10 @@ package com.tolean.elab.business.impl.dictionary
 
 import com.tolean.elab.business.impl.dictionary.validator.DictionaryValidator
 import com.tolean.elab.dto.dictionary.DictionaryItemNewDto
+import com.tolean.elab.dto.dictionary.DictionaryUpdateDto
 import com.tolean.elab.mapper.dictionary.DictionaryItemMapper
 import com.tolean.elab.mapper.dictionary.DictionaryMapper
+import com.tolean.elab.persistence.dictionary.Dictionary
 import com.tolean.elab.persistence.dictionary.DictionaryItem
 import com.tolean.elab.persistence.dictionary.DictionaryRepository
 import spock.lang.Specification
@@ -28,9 +30,9 @@ class DictionaryServiceImplTest extends Specification {
     dictionaryItemMapperMock = Mock(DictionaryItemMapper)
     dictionaryValidatorMock = Mock(DictionaryValidator)
 
-    dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
-      dictionaryItemMapperMock, dictionaryValidatorMock)
+    dictionaryService = getDictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock, dictionaryItemMapperMock, dictionaryValidatorMock)
   }
+
 
   def "addDictionaryItem should throw exception if dictionary with given code not exist"() {
     when:
@@ -42,7 +44,7 @@ class DictionaryServiceImplTest extends Specification {
 
   def "addDictionaryItem should add new dictionary item"() {
     given:
-      com.tolean.elab.persistence.dictionary.Dictionary dictionary = com.tolean.elab.persistence.dictionary.Dictionary.builder()
+      Dictionary dictionary = Dictionary.builder()
         .dictionaryItems([DictionaryItem.builder().name("item1").build()])
         .build()
 
@@ -58,8 +60,7 @@ class DictionaryServiceImplTest extends Specification {
         getName() >> "nowa"
       }
 
-      dictionaryService = new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
-        dictionaryItemMapperMock, dictionaryValidatorMock)
+      dictionaryService = getDictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock, dictionaryItemMapperMock, dictionaryValidatorMock)
     when:
       dictionaryService.addDictionaryItem("kod", dictionaryItemNewDto)
     then:
@@ -67,6 +68,52 @@ class DictionaryServiceImplTest extends Specification {
       dictionary.dictionaryItems.name.contains("nowa")
       1 * dictionaryRepositoryMock.save(dictionary)
       1 * dictionaryMapperMock.toDictionaryViewDto(_)
+  }
+
+  def "update should save dictionary"() {
+    given:
+      String dictionaryName = "dictionaryName"
+      String dictionaryItemValue = "value"
+      Dictionary dictionary = Dictionary.builder()
+        .code(dictionaryName)
+        .dictionaryItems([DictionaryItem.builder().active(true).name(dictionaryItemValue).build()])
+        .build()
+
+      dictionaryRepositoryMock = Mock(DictionaryRepository) {
+        findByCode(dictionaryName) >> Optional.of(dictionary)
+      }
+
+      dictionaryService = getDictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock, dictionaryItemMapperMock, dictionaryValidatorMock)
+    when:
+      dictionaryService.update(dictionaryName, new DictionaryUpdateDto(dictionaryItemValue))
+    then:
+      1 * dictionaryRepositoryMock.save(dictionary)
+  }
+
+  def "update should throw exception when value is not active in dictionary items"() {
+    given:
+      String dictionaryName = "dictionaryName"
+      String dictionaryItemValue = "value"
+      Dictionary dictionary = Dictionary.builder()
+        .code(dictionaryName)
+        .dictionaryItems([DictionaryItem.builder().name(dictionaryItemValue).build()])
+        .build()
+
+      dictionaryRepositoryMock = Mock(DictionaryRepository) {
+        findByCode(dictionaryName) >> Optional.of(dictionary)
+      }
+
+      dictionaryService = getDictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock, dictionaryItemMapperMock, dictionaryValidatorMock)
+    when:
+      dictionaryService.update(dictionaryName, new DictionaryUpdateDto(dictionaryItemValue))
+    then:
+      def exception = thrown(DictionaryItemNotFoundException)
+      exception.eid.id == "20170221:194603"
+  }
+
+  private DictionaryServiceImpl getDictionaryServiceImpl(DictionaryRepository dictionaryRepositoryMock, DictionaryMapper dictionaryMapperMock, DictionaryItemMapper dictionaryItemMapperMock, DictionaryValidator dictionaryValidatorMock) {
+    new DictionaryServiceImpl(dictionaryRepositoryMock, dictionaryMapperMock,
+      dictionaryItemMapperMock, dictionaryValidatorMock)
   }
 
 }
