@@ -1,0 +1,7 @@
+<h1 *ngIf="systemInfo">{{systemInfo.name}} <span class="system-info-version">ver. {{systemInfo.version}}</span></h1>
+
+<div class="logged-as" [hidden]="!isLoggedIn()">
+<br><strong>{{getProfileName()}}</strong>
+</div>
+
+<div class="logged-as-image" [hidden]="!isLoggedIn()"></div>

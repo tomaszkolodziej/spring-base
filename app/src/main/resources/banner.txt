@@ -1,0 +1,10 @@
+
+
+      ___| |    __ _| |__
+     / _ \ |   / _` | '_ \
+    |  __/ |__| (_| | |_) |
+     \___|_____\__,_|_.__/
+
+                    ver. ${application.version}
+              sping ver. ${spring-boot.version}
+

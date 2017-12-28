@@ -1,0 +1,10 @@
+a {
+  color: #757575;
+  padding-right: 20px;
+}
+
+div.links {
+  border-top: solid 1px #bdbdbd;
+  padding: 20px;
+  text-align: center;
+}

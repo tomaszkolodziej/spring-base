@@ -1,0 +1,8 @@
+= eLab
+
+[horizontal]
+`mvn install`:: zbudowanie projektu
+`mvn spring-boot:run`:: uruchomienie w trybie produkcji
+`mvn spring-boot:run -Dspring.profiles.active=dev`:: uruchomienie w trybie developerskim
+`npm install`:: z katalogu presentation/web
+`npm start`:: z katalogu presentation/web

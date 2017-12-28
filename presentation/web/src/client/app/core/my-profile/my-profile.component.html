@@ -1,0 +1,59 @@
+<p-panel>
+  <form (ngSubmit)="saveProfile()" #myProfileForm="ngForm">
+    <h2>profil</h2>
+
+    <div class="form-row">
+      <div class="form-row-label">
+        <tla-form-label label="login"></tla-form-label>
+      </div>
+      <div class="form-row-control">
+        <!--<sm-input [(model)]="profile.login" disabled></sm-input>-->
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-row-label">
+        <tla-form-label label="imię"></tla-form-label>
+      </div>
+      <div class="form-row-control">
+        <!--<sm-input [(model)]="profile.firstName"></sm-input>{{profile.firstName}}-->
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-row-label">
+        <tla-form-label label="nazwisko"></tla-form-label>
+      </div>
+      <div class="form-row-control">
+        {{profile.lastName}}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-row-label">
+        <tla-form-label label="e-mail"></tla-form-label>
+      </div>
+      <div class="form-row-control">
+        {{profile.email}}
+      </div>
+    </div>
+
+    <!--<sm-button class="primary" (click)="saveProfile()" [disabled]="loading">zapisz</sm-button>-->
+  </form>
+</p-panel>
+
+<p-panel hidden>
+  <form (ngSubmit)="saveSettings()" #myProfileSettingsForm="ngForm">
+    ustawienia
+
+
+    <!--<sm-button class="primary" (click)="saveSettings()" [disabled]="loading">zapisz</sm-button>-->
+    <!--<sm-button (click)="restoreDefaultSettings()" [disabled]="loading">przywróć domyślne</sm-button>-->
+  </form>
+</p-panel>
+
+<p-panel hidden>
+  <form (ngSubmit)="savePassword()" #myProfilePasswordForm="ngForm">
+    zmiana hasła
+
+
+    <!--<sm-button class="primary" (click)="savePassword()" [disabled]="loading">zapisz</sm-button>-->
+  </form>
+</p-panel>

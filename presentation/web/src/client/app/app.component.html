@@ -1,0 +1,12 @@
+<tk-toolbar *ngIf="isLoggedIn()"></tk-toolbar>
+
+<tk-navbar></tk-navbar>
+
+<main>
+    <router-outlet></router-outlet>
+    <ng2-toasty></ng2-toasty>
+</main>
+
+<tk-footerlinks></tk-footerlinks>
+
+<tk-footerbar></tk-footerbar>

@@ -1,0 +1,14 @@
+<div style="padding-top: 5px" [hidden]="!isLoggedIn()">
+    <p-menubar [model]="menuItems"></p-menubar>
+</div>
+
+<nav [hidden]="isLoggedIn()">
+    <div style="float: left">
+        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"
+           [hidden]="isLoggedIn()">strona główna</a>
+    </div>
+    <div style="float: right">
+        <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"
+           [routerLinkActiveOptions]="{exact:true}" [hidden]="isLoggedIn()">zaloguj</a>
+    </div>
+</nav>
